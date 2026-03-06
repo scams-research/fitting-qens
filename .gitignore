@@ -1,0 +1,18 @@
+# Snakemake and showyourwork temporaries
+**/.snakemake
+**/.showyourwork*
+
+# Showyourwork output files
+/*.pdf
+report.html
+arxiv.tar.gz
+
+# Figure output
+src/tex/figures/*
+
+# Miscellaneous
+**/__pycache__
+**/*.ipynb
+**/*.ipynb_checkpoints
+**/.DS_Store
+*.synctex.gz

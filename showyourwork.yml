@@ -1,0 +1,291 @@
+# Enable rule caching on Zenodo?
+cache_on_zenodo: false
+
+# Externally-hosted datasets, e.g. on Zenodo
+datasets:
+  10.5281/zenodo.18836632:
+    contents:
+      # simulation real space 
+      autocorrelation_samples.txt: src/data/autocorrelation_samples.txt
+      kinisi_D: src/data/kinisi_D
+      kinisi_distribution: src/data/kinisi_distribution
+      kinisi_MSD: src/data/kinisi_MSD
+      kinisi_t: src/data/kinisi_t
+      angular_density_2d.txt: src/data/angular_density_2d.txt
+      lit_approach.pkl: src/data/lit_approach.pkl
+      model_gauss_oneexp.pkl: src/data/model_gauss_oneexp.pkl
+      model_gauss_oneexpgauss.pkl: src/data/model_gauss_oneexpgauss.pkl
+      model_gauss_twoexp.pkl: src/data/model_gauss_twoexp.pkl
+      model_gauss_twoexpgauss.pkl: src/data/model_gauss_twoexpgauss.pkl
+      model_nogauss_oneexp.pkl: src/data/model_nogauss_oneexp.pkl
+      model_nogauss_oneexpgauss.pkl: src/data/model_nogauss_oneexpgauss.pkl
+      model_nogauss_twoexp.pkl: src/data/model_nogauss_twoexp.pkl
+      model_nogauss_twoexpgauss.pkl: src/data/model_nogauss_twoexpgauss.pkl
+
+      # simulation Q space
+      incoh_mdanse.csv: src/data/incoh_mdanse.csv
+      total_mdanse.csv: src/data/total_mdanse.csv
+      rotation_only_incoh_mdanse.csv: src/data/rotation_only_incoh_mdanse.csv
+      translation_only_incoh_mdanse.csv: src/data/translation_only_incoh_mdanse.csv
+
+      # simulation Q space fitting
+      rotation_only_model.pkl: src/data/rotation_only_model.pkl
+      aniso_full_mod_050mev.pkl: src/data/aniso_full_mod_050mev.pkl
+      aniso_full_mod_075mev.pkl: src/data/aniso_full_mod_075mev.pkl
+      aniso_full_mod_100mev.pkl: src/data/aniso_full_mod_100mev.pkl
+      aniso_full_mod_125mev.pkl: src/data/aniso_full_mod_125mev.pkl
+      aniso_full_mod_150mev.pkl: src/data/aniso_full_mod_150mev.pkl
+      iso_full_mod_050mev.pkl: src/data/iso_full_mod_050mev.pkl
+      iso_full_mod_075mev.pkl: src/data/iso_full_mod_075mev.pkl
+      iso_full_mod_100mev.pkl: src/data/iso_full_mod_100mev.pkl
+      iso_full_mod_125mev.pkl: src/data/iso_full_mod_125mev.pkl
+      iso_full_mod_150mev.pkl: src/data/iso_full_mod_150mev.pkl
+      rotation_only_aniso_model_nbkg00.pkl: src/data/rotation_only_aniso_model_nbkg00.pkl
+      rotation_only_aniso_model_nbkg01.pkl: src/data/rotation_only_aniso_model_nbkg01.pkl
+      rotation_only_aniso_model_nbkg02.pkl: src/data/rotation_only_aniso_model_nbkg02.pkl
+      rotation_only_aniso_model_nbkg03.pkl: src/data/rotation_only_aniso_model_nbkg03.pkl
+      rotation_only_aniso_model_nbkg04.pkl: src/data/rotation_only_aniso_model_nbkg04.pkl
+      rotation_only_aniso_model_nbkg05.pkl: src/data/rotation_only_aniso_model_nbkg05.pkl
+      rotation_only_aniso_model_nbkg06.pkl: src/data/rotation_only_aniso_model_nbkg06.pkl
+      rotation_only_aniso_model_nbkg07.pkl: src/data/rotation_only_aniso_model_nbkg07.pkl
+      rotation_only_aniso_model_nbkg08.pkl: src/data/rotation_only_aniso_model_nbkg08.pkl
+      rotation_only_aniso_model_nbkg09.pkl: src/data/rotation_only_aniso_model_nbkg09.pkl
+      rotation_only_aniso_model_nbkg10.pkl: src/data/rotation_only_aniso_model_nbkg10.pkl
+      rotation_only_aniso_model_nbkg11.pkl: src/data/rotation_only_aniso_model_nbkg11.pkl
+      rotation_only_aniso_model_nbkg12.pkl: src/data/rotation_only_aniso_model_nbkg12.pkl
+      rotation_only_iso_model_nbkg00.pkl: src/data/rotation_only_iso_model_nbkg00.pkl
+      rotation_only_iso_model_nbkg01.pkl: src/data/rotation_only_iso_model_nbkg01.pkl
+      rotation_only_iso_model_nbkg02.pkl: src/data/rotation_only_iso_model_nbkg02.pkl
+      rotation_only_iso_model_nbkg03.pkl: src/data/rotation_only_iso_model_nbkg03.pkl
+      rotation_only_iso_model_nbkg04.pkl: src/data/rotation_only_iso_model_nbkg04.pkl
+      rotation_only_iso_model_nbkg05.pkl: src/data/rotation_only_iso_model_nbkg05.pkl
+      rotation_only_iso_model_nbkg06.pkl: src/data/rotation_only_iso_model_nbkg06.pkl
+      rotation_only_iso_model_nbkg07.pkl: src/data/rotation_only_iso_model_nbkg07.pkl
+      rotation_only_iso_model_nbkg08.pkl: src/data/rotation_only_iso_model_nbkg08.pkl
+      rotation_only_iso_model_nbkg09.pkl: src/data/rotation_only_iso_model_nbkg09.pkl
+      rotation_only_iso_model_nbkg10.pkl: src/data/rotation_only_iso_model_nbkg10.pkl
+      rotation_only_iso_model_nbkg11.pkl: src/data/rotation_only_iso_model_nbkg11.pkl
+      rotation_only_iso_model_nbkg12.pkl: src/data/rotation_only_iso_model_nbkg12.pkl
+      rotation_only_model_iso.pkl: src/data/rotation_only_model_iso.pkl
+
+      # IRIS data
+      benzene_IRIS00107089.nxs: src/data/benzene_IRIS00107089.nxs
+      bkg_IRIS00107097.nxs: src/data/bkg_IRIS00107097.nxs
+      resolution_IRIS00107073.nxs: src/data/resolution_IRIS00107073.nxs
+
+      #pLET data 
+      pLET_benzene_260K_360_inc.nxspe: src/data/pLET_benzene_260K_360_inc.nxspe
+      pLET_benzene_290K_360_inc.nxspe: src/data/pLET_benzene_290K_360_inc.nxspe
+      pLET_benzene_260K_197_inc.nxspe: src/data/pLET_benzene_260K_197_inc.nxspe
+      pLET_benzene_290K_197_inc.nxspe: src/data/pLET_benzene_290K_197_inc.nxspe
+      pLET_empty_360_inc.nxspe: src/data/pLET_empty_360_inc.nxspe
+      pLET_empty_197_inc.nxspe: src/data/pLET_empty_197_inc.nxspe
+
+      # Experimental models
+      pLET_aniso_model.pkl: src/data/pLET_aniso_model.pkl
+      pLET_iso_model.pkl: src/data/pLET_iso_model.pkl
+      pLET_aniso_model_samples_360.pkl: src/data/pLET_aniso_model_samples_360.pkl
+      pLET_aniso_model_samples_197.pkl: src/data/pLET_aniso_model_samples_197.pkl
+
+# Custom file dependencies
+dependencies:
+  src/tex/ms.tex:
+    - src/tex/bib.bib
+    - src/tex/output/kinisi_D.txt
+    - src/tex/output/D_rot_diff.txt
+    - src/tex/output/D_rot_ratio.txt
+    - src/tex/output/aniso_rot_only_evidence.txt
+    - src/tex/output/iso_rot_only_evidence.txt
+    - src/tex/output/D_fick_let.txt
+    - src/tex/output/D_ratio_let.txt
+    - src/tex/output/evidence_aniso_let.txt
+    - src/tex/output/evidence_iso_let.txt
+    - src/tex/output/model_nogauss_oneexp_evidence.txt
+    - src/tex/output/model_nogauss_twoexp_evidence.txt
+    - src/tex/output/model_nogauss_oneexpgauss_evidence.txt
+    - src/tex/output/model_nogauss_twoexpgauss_evidence.txt
+    - src/tex/output/model_gauss_oneexp_evidence.txt
+    - src/tex/output/model_gauss_twoexp_evidence.txt
+    - src/tex/output/model_gauss_oneexpgauss_evidence.txt
+    - src/tex/output/model_gauss_twoexpgauss_evidence.txt
+    - src/tex/output/lit_approach_t0.txt
+    - src/tex/output/lit_approach_t90.txt
+    - src/tex/output/lit_approach_Ds.txt
+    - src/tex/output/lit_approach_Dt.txt
+    - src/tex/output/best_raf_evidence.txt
+    - src/tex/output/lit_approach_evidence.txt
+  src/scripts/struc_prod.py:
+    - src/scripts/_fig_params.py
+    - src/code/iris_analysis/iris.py
+    - src/code/functions.py
+    - src/data/benzene_IRIS00107089.nxs
+    - src/data/bkg_IRIS00107097.nxs
+    - src/data/resolution_IRIS00107073.nxs
+    - src/data/total_mdanse.csv
+    - src/data/incoh_mdanse.csv
+  src/scripts/four_panel_sim.py:
+    - src/scripts/_fig_params.py
+    - src/data/autocorrelation_samples.txt
+    - src/data/model_gauss_twoexp.pkl 
+    - src/data/kinisi_distribution
+    - src/data/kinisi_MSD
+    - src/data/kinisi_t 
+    - src/data/kinisi_D
+  src/scripts/rot_sim_ds.py:
+    - src/scripts/_fig_params.py
+    - src/data/rotation_only_model.pkl
+    - src/data/model_gauss_twoexp.pkl
+  src/scripts/evidence_full_sim.py:
+    - src/scripts/_fig_params.py
+    - src/data/aniso_full_mod_050mev.pkl
+    - src/data/aniso_full_mod_075mev.pkl
+    - src/data/aniso_full_mod_100mev.pkl
+    - src/data/aniso_full_mod_125mev.pkl
+    - src/data/aniso_full_mod_150mev.pkl
+    - src/data/iso_full_mod_050mev.pkl
+    - src/data/iso_full_mod_075mev.pkl
+    - src/data/iso_full_mod_100mev.pkl
+    - src/data/iso_full_mod_125mev.pkl
+    - src/data/iso_full_mod_150mev.pkl
+    - src/data/model_gauss_twoexp.pkl
+  src/scripts/heatmap.py:
+    - src/scripts/_fig_params.py
+    - src/data/pLET_benzene_260K_360_inc.nxspe
+    - src/data/pLET_benzene_290K_360_inc.nxspe
+    - src/data/pLET_empty_360_inc.nxspe
+    - src/data/pLET_benzene_260K_197_inc.nxspe
+    - src/data/pLET_benzene_290K_197_inc.nxspe
+    - src/data/pLET_empty_197_inc.nxspe
+    - src/data/pLET_aniso_model_samples_360.pkl
+    - src/data/pLET_aniso_model_samples_197.pkl
+  src/scripts/hists.py:
+    - src/scripts/_fig_params.py
+    - src/data/pLET_aniso_model.pkl
+  src/scripts/si_raf_chain.py:
+    - src/scripts/_fig_params.py
+    - src/data/model_gauss_oneexp.pkl
+    - src/data/model_gauss_oneexpgauss.pkl
+    - src/data/model_gauss_twoexp.pkl
+    - src/data/model_gauss_twoexpgauss.pkl
+    - src/data/model_nogauss_oneexp.pkl
+    - src/data/model_nogauss_oneexpgauss.pkl
+    - src/data/model_nogauss_twoexp.pkl
+    - src/data/model_nogauss_twoexpgauss.pkl
+  src/scripts/si_four_panel_decomp.py:
+    - src/code/functions.py
+    - src/data/incoh_mdanse.csv
+    - src/data/rotation_only_incoh_mdanse.csv
+    - src/data/translation_only_incoh_mdanse.csv
+  src/scripts/si_rot_nbkg.py:
+    - src/data/rotation_only_aniso_model_nbkg00.pkl
+    - src/data/rotation_only_aniso_model_nbkg01.pkl
+    - src/data/rotation_only_aniso_model_nbkg02.pkl
+    - src/data/rotation_only_aniso_model_nbkg03.pkl
+    - src/data/rotation_only_aniso_model_nbkg04.pkl
+    - src/data/rotation_only_aniso_model_nbkg05.pkl
+    - src/data/rotation_only_aniso_model_nbkg06.pkl
+    - src/data/rotation_only_aniso_model_nbkg07.pkl
+    - src/data/rotation_only_aniso_model_nbkg08.pkl
+    - src/data/rotation_only_aniso_model_nbkg09.pkl
+    - src/data/rotation_only_aniso_model_nbkg10.pkl
+    - src/data/rotation_only_aniso_model_nbkg11.pkl
+    - src/data/rotation_only_aniso_model_nbkg12.pkl
+    - src/data/rotation_only_iso_model_nbkg00.pkl
+    - src/data/rotation_only_iso_model_nbkg01.pkl
+    - src/data/rotation_only_iso_model_nbkg02.pkl
+    - src/data/rotation_only_iso_model_nbkg03.pkl
+    - src/data/rotation_only_iso_model_nbkg04.pkl
+    - src/data/rotation_only_iso_model_nbkg05.pkl
+    - src/data/rotation_only_iso_model_nbkg06.pkl
+    - src/data/rotation_only_iso_model_nbkg07.pkl
+    - src/data/rotation_only_iso_model_nbkg08.pkl
+    - src/data/rotation_only_iso_model_nbkg09.pkl
+    - src/data/rotation_only_iso_model_nbkg10.pkl
+    - src/data/rotation_only_iso_model_nbkg11.pkl
+    - src/data/rotation_only_iso_model_nbkg12.pkl
+  src/scripts/si_angular_density.py:
+    - src/scripts/_fig_params.py
+    - src/data/angular_density_2d.txt
+  src/scripts/si_u_bkg.py:
+    - src/scripts/_fig_params.py
+    - src/data/pLET_benzene_290K_360_inc.nxspe
+    - src/data/pLET_benzene_290K_197_inc.nxspe
+    - src/data/pLET_aniso_model_samples_360.pkl
+    - src/data/pLET_aniso_model_samples_197.pkl
+  src/scripts/si_aniso_corner.py:
+    - src/scripts/_fig_params.py
+    - src/data/pLET_aniso_model.pkl
+  src/scripts/si_model360_fit.py:
+      - src/scripts/_fig_params.py
+      - src/data/pLET_benzene_290K_360_inc.nxspe
+      - src/data/pLET_empty_360_inc.nxspe
+      - src/data/pLET_aniso_model_samples_360.pkl
+  src/scripts/si_model197_fit.py:
+      - src/scripts/_fig_params.py
+      - src/data/pLET_benzene_290K_197_inc.nxspe
+      - src/data/pLET_empty_197_inc.nxspe
+      - src/data/pLET_aniso_model_samples_197.pkl
+
+
+# Name of the `.tex` manuscript and corresponding `.pdf` article
+ms_name: ms
+
+# Optimize DAG by removing unnecessary jobs upstream of cache hits?
+optimize_caching: false
+
+# Overleaf sync settings
+overleaf:
+  # Overleaf project ID (blank = disabled)
+  id: 6825df7063fda1fd75ea1ad4
+  # Perform sync on GitHub Actions?
+  gh_actions_sync: true
+  # List of files to push to Overleaf
+  push:
+    - src/tex/figures
+    - src/tex/output
+  # List of files to pull from Overleaf
+  pull:
+    - src/tex/ms.tex
+    - src/tex/bib.bib
+
+# Always require all input files to be present on disk for workflow to pass?
+require_inputs: true
+
+# Allow cacheable rules to run on GitHub Actions?
+run_cache_rules_on_ci: false
+
+# Mapping of script file extensions to instructions for executing them
+scripts:
+  py: python {script}
+
+# Display of the `showyourwork` stamp on first page
+stamp:
+  # Show the stamp?
+  enabled: false
+
+# Change margin icon colour and position
+margin_icons:
+    colors:
+        cache: "0.25,0.25,0.25"
+        dataset: "0.25,0.25,0.25"
+        github: "0.25,0.25,0.25"
+        sandbox: "0.25,0.25,0.25"
+    horizontal_offset: -4
+
+# Enable SyncTeX?
+synctex: True
+
+# Command-line options to be passed to tectonic when building the manuscript
+tectonic_args: []
+
+# Preprocessing script for arXiv tarball
+# (such as to switch `minted` from `finalizecache` to `frozencache`)
+# The script will be passed a directory containing the manuscript source
+# as input, and should modify the contents of that directory in-place.
+# preprocess_arxiv_script: my_preprocess_script.sh
+
+# Enable verbose output?
+verbose: true
+
+# Version of `showyourwork` used to create this workflow
+version: 0.4.4.dev85+g2898ce6

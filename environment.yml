@@ -1,0 +1,13 @@
+dependencies:
+  - conda-forge::numpy=2.2.6
+  - conda-forge::pip=21.0.1
+  - conda-forge::python=3.11.11
+  - pip:
+      - matplotlib==3.10.0
+      - scipp==25.2.0
+      - h5py==3.13.0
+      - dynesty==3.0.0
+      - scipy==1.17.0
+      - seaborn==0.13.2
+      - cmcrameri==1.9
+      - corner==2.2.3

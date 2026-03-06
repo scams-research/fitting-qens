@@ -1,0 +1,30 @@
+models = ['model_nogauss_oneexp', 'model_nogauss_twoexp', 'model_nogauss_oneexpgauss', 'model_nogauss_twoexpgauss', 'model_gauss_oneexp', 'model_gauss_twoexp', 'model_gauss_oneexpgauss', 'model_gauss_twoexpgauss']
+
+rule all:
+    input:
+        [f"src/data/{i}.pkl" for i in models],
+         "src/data/lit_approach.pkl"
+
+rule:
+    conda: "fitting-qens"
+    name:
+        "autocorrelation"
+    input: 
+        "src/data/autocorrelation_samples.txt",
+        "src/code/autocorrelation.py",
+        "src/code/autocorr_models.py"
+    output:
+        [f"src/data/{i}.pkl" for i in models]
+    script:
+        "src/code/autocorrelation.py"
+
+rule:
+    conda: "fitting-qens"
+    name:
+        "literature_comparison"
+    input: 
+        "src/code/lit_compare.py",
+    output:
+        "src/data/lit_approach.pkl"
+    script:
+        "src/code/lit_compare.py"
