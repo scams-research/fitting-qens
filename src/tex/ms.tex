@@ -25,6 +25,12 @@
 \newcommand{\papertitle}{Lost in Translation: Simulation-Informed Bayesian Inference Improves Understanding of Molecular Motion From Neutron Scattering}
 \usepackage[capitalise]{cleveref}
 \creflabelformat{equation}{#2\textup{#1}#3}
+\makeatletter
+\renewcommand{\frontmatter@abstractheading}{%
+  \centerline{\large\bfseries\abstractname}%
+  \vspace{1pc}%
+}
+\makeatother
 
 \renewcommand\appendixname{}
 
@@ -285,7 +291,7 @@ However, as the $\omega$-dynamic range is increased, the Bayesian evidence for t
 Representative marginal posterior distributions of the translational self-diffusion coefficient and rotational diffusion coefficients are given in Figs.~\ref{fig:energy}b, \ref{fig:energy}c, and \ref{fig:energy}d at \qty{\pm1.25}{\milli\electronvolt}.
 While the two rotational diffusion coefficients are distinct, their values differ slightly from those found by analysing the decomposed simulation.
 This difference may be due to the assumption that translation and rotation are completely uncorrelated, which is not accounted for when the molecular translation is removed, or the use of the numerical convolution to evaluate \cref{eqn:full}. 
-At larger $\omega$-dynamic ranges, high-energy local motions that were observed in the real-space analysis above, are present in the simulated QENS signal (see~\ref{sec:high_energy}), this was also characterised experimentally within \cite{Kikuchi2023}. 
+At larger $\omega$-dynamic ranges, high-energy local motions that were observed in the real-space analysis above, are present in the simulated QENS signal, this was also characterised experimentally within \cite{Kikuchi2023}. 
 \cref{eqn:full} does not describe these high-energy motions, hence there is a sharp decrease in the support for the more complex model. 
 %
 \begin{figure}
@@ -799,12 +805,6 @@ For both the isotropic and the anisotropic model, there was the sufficient evide
     \script{si_rot_nbkg.py}
 \end{figure}
 
-\section{Emergence of High Energy Local Motions}
-\label{sec:high_energy}
-
-
-
-
 \section{Model fitting}
 \label{sec:model_fit}
 
@@ -822,11 +822,11 @@ S_R(Q, \omega) =
 j_0^2(QR)\,\delta(\omega) + 3\,j_1^2(QR)
 \left[
 \frac{1}{\pi}
-\frac{2D_r}{\omega^2 + 2(D_r)^2}
+\frac{2D_r}{\omega^2 + (2D_r)^2}
 \right] + 5\,j_2^2(QR)
 \left[
 \frac{1}{\pi}
-\frac{6D_r}{\omega^2 + (D_r)^2} 
+\frac{6D_r}{\omega^2 + (6D_r)^2} 
 \right],
 \label{eqn:iso}
 \end{equation}
