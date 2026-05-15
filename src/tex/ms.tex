@@ -25,8 +25,17 @@
 \newcommand{\papertitle}{Lost in Translation: Simulation-Informed Bayesian Inference Improves Characterisation of Molecular Motion From Neutron Scattering}
 \usepackage[capitalise]{cleveref}
 \creflabelformat{equation}{#2\textup{#1}#3}
+\makeatletter
+\renewcommand{\frontmatter@abstractheading}{%
+  \vspace{0.5pc}
+  \centerline{\bfseries\MakeUppercase\abstractname}%
+  \vspace{0.5pc}%
+}
+\makeatother
 
 \renewcommand\appendixname{}
+
+\def\bibsection{\section*{\refname}} 
 
 \makeatletter
 \def\maketitle{
@@ -70,8 +79,8 @@ This integrated, Bayesian evidence-based analytical framework defines a new para
 
 \maketitle
 
-\section{Introduction}
-\label{sec:intro}
+% \section{Introduction}
+% \label{sec:intro}
 
 % QENS in chemistry, specifically QENS for rotational dynamics, with some choice examples. 
 Progress in catalysis and materials chemistry relies on resolving molecular motion under confinement and in complex environments. 
@@ -106,10 +115,10 @@ Our approach is demonstrated through a state-of-the-art study in which the compl
 Predictions from molecular dynamics simulations are used to inform experimental design and guide QENS analysis. 
 Finally, we show that this comprehensive modelling-theory combination can extract previously unobtained information about the dynamics in this classic, well-studied system~\cite{Kikuchi2023}.
 
-\section{Results and Discussion}
-\label{sec:res}
+% \section{Results and Discussion}
+% \label{sec:res}
 
-\subsection{Simulations as a Qualitative Model}
+\subsection*{Simulations as a Qualitative Model}
 \label{sec:sims}
 
 % Simulations overlap but aren't perfect, hence qualitative
@@ -214,7 +223,7 @@ j_0^2(QR)\,\delta(\omega) + 3\,j_1^2(QR)
 where $j_n(Q,R)$ represents the $n$-th order spherical Bessel function with a radius of gyration $R$, which was fixed to \qty{2.48}{\angstrom} for benzene and $\delta(\omega)$ is a Dirac delta function. 
 The individual $\Gamma$ values are made up from the spinning and tumbling rotational diffusion coefficients as follows: $\Gamma_1 = D_s + D_t$, $\Gamma_2 = 6D_t$, and $\Gamma_3 = 4D_s + 2D_t$.
 
-\subsection{Assessing the Anisotropic Model For Simulated QENS Data}
+\subsection*{Assessing the Anisotropic Model For Simulated QENS Data}
 \label{sec:dynamic}
 
 % Introductory paragraph contextualise the aim. 
@@ -285,21 +294,21 @@ However, as the $\omega$-dynamic range is increased, the Bayesian evidence for t
 Representative marginal posterior distributions of the translational self-diffusion coefficient and rotational diffusion coefficients are given in Figs.~\ref{fig:energy}b, \ref{fig:energy}c, and \ref{fig:energy}d at \qty{\pm1.25}{\milli\electronvolt}.
 While the two rotational diffusion coefficients are distinct, their values differ slightly from those found by analysing the decomposed simulation.
 This difference may be due to the assumption that translation and rotation are completely uncorrelated, which is not accounted for when the molecular translation is removed, or the use of the numerical convolution to evaluate \cref{eqn:full}. 
-At larger $\omega$-dynamic ranges, high-energy local motions that were observed in the real-space analysis above, are present in the simulated QENS signal (see~\ref{sec:high_energy}), this was also characterised experimentally within \cite{Kikuchi2023}. 
+At larger $\omega$-dynamic ranges, high-energy local motions that were observed in the real-space analysis above, are present in the simulated QENS signal, this was also characterised experimentally within \cite{Kikuchi2023}. 
 \cref{eqn:full} does not describe these high-energy motions, hence there is a sharp decrease in the support for the more complex model. 
 %
 \begin{figure}
     \centering
     \includegraphics[width=\columnwidth]{figures/Evidence_full_sim.pdf}
     \vspace{-1.5\baselineskip}
-    \caption{analysis of $\omega$-dynamic range dependence of Bayesian evidence using QENS from the full simulation: (a) the Bayesian evidence for the anisotropic model compared with the isotropic model as a function of $\omega$-dynamic range, where the threshold for strong evidence is indicated with the dashed black line, and (b) the Fickian self-diffusion coefficient, (c) tumbling, and (d) spinning rotational diffusion coefficients marginal posterior distributions, obtained for the anisotropic model, given the simulated incoherent QENS signal at an $\omega$-dynamic range of $\qty{\pm1.25}{\milli\electronvolt}$, compared with the mean of the distributions obtained directly from simulation trajectory (dashed vertical black lines).}
+    \caption{Analysis of $\omega$-dynamic range dependence of Bayesian evidence using QENS from the full simulation: (a) the Bayesian evidence for the anisotropic model compared with the isotropic model as a function of $\omega$-dynamic range, where the threshold for strong evidence is indicated with the dashed black line, and (b) the Fickian self-diffusion coefficient, (c) tumbling, and (d) spinning rotational diffusion coefficients marginal posterior distributions, obtained for the anisotropic model, given the simulated incoherent QENS signal at an $\omega$-dynamic range of $\qty{\pm1.25}{\milli\electronvolt}$, compared with the mean of the distributions obtained directly from simulation trajectory (dashed vertical black lines).}
     \label{fig:energy}
     \vspace{-1\baselineskip}
     \script{evidence_full_sim.py}
 \end{figure}
 %
 
-\subsection{Application to Experimental QENS Data}
+\subsection*{Application to Experimental QENS Data}
 \label{sec:exp}
 
 % Throw it at the experiment, what comes out?
@@ -326,7 +335,7 @@ There was strong support for the more complex anisotropic model, with a log-Baye
 Given the LET data, the full posterior distribution for the anisotropic analytical model was also found. 
 All three experimental diffusion coefficients differ slightly from those obtained from the MD simulation, with the experiment showing faster Fickian diffusion and parallel rotational diffusion, and slower perpendicular rotational diffusion.
 The marginal posterior distribution for the Fickian self-diffusion coefficient is shown in \cref{fig:hist}a, with a mean and $1\sigma$ credible interval of $\variable{output/D_fick_let.txt}$.
-This value agrees well with previous QENS analysis~\cite{Kikuchi2023}, which found the self diffusion coefficient to be $\sim\qty{0.16}{\angstrom\square\per\pico\second}$ and other experimental measurements, such as the $\qty{0.18}{\angstrom\squared\per\pico\second}$ from PFG-NMR measurements~\cite{Kasahara2010}. 
+This value agrees well with previous QENS analysis~\cite{Kikuchi2023}, which found the self diffusion coefficient to be $\sim\qty{0.16}{\angstrom\squared\per\pico\second}$ and other experimental measurements, such as the $\qty{0.18}{\angstrom\squared\per\pico\second}$ from PFG-NMR measurements~\cite{Kasahara2010}. 
 %
 \begin{figure}
     \centering
@@ -346,8 +355,8 @@ The marginal posterior distributions for $D_s$ and $D_t$ indicate faster and slo
 This anisotropy ratio is greater than that found from simulation alone, which may be rationalised by recognising that experimentally, liquid benzene has been shown to form `T'- and `Y'-shaped perpendicular dimers, as well as parallel $\pi$-stacked agglomerates~\cite{Falkowska2016, Headen2019}; structures that are not observed in our simulations (see~\ref{sec:comp_marta}) and would make tumbling energetically unfavourable compared to spinning. 
 By using simulations as a quantitative model for the experimental data, our model can characterise this anisotropy without the accuracy limitations associated with classical simulations.
 
-\section{Conclusions}
-\label{sec:con}
+% \section{Conclusions}
+% \label{sec:con}
 
 We have derived a detailed, fully $Q$-dependent analytical model for anisotropic rotational motion and explicitly evaluated its statistical sensitivity within the $Q$- and $\omega$- ranges accessible to QENS, using Bayesian analysis informed by molecular dynamics simulations. 
 Furthermore, we employed Bayesian model selection to compare this model with simpler, lower-parameter descriptions, demonstrating that an anisotropic model provides a more accurate and physically nuanced account of the data. 
@@ -366,6 +375,21 @@ K.M.: Conceptualization, Funding acquisition, Investigation, Supervision, Writin
 G.J.N.: Data curation, Investigation, Writing - review \& editing. 
 J.A.: Conceptualization, Formal analysis, Funding acquisition, Investigation, Methodology, Project administration, Supervision, Writing - review \& editing. 
 A.R.M.: Conceptualisation, Formal analysis, Funding acquisition, Investigation, Methodology, Project administration, Supervision, Visualisation, Writing - original draft. \\
+
+\section*{Supporting Information} 
+
+Supporting information for this work is available and includes: 
+\begin{itemize}
+    \item Descriptions of the simulation parameters, experimental measurements and data reduction.
+    \item Details of the simulation translational motion analysis. 
+    \item Mathematical derivations of the rotational autocorrelation function and dynamic structure factor for an oblate symmetric top.
+    \item Details of the fitting approach used for the rotational autocorrelation function analysis. 
+    \item A comparison of the rotational autocorrelation function analysis used in previous literature with that used in this work. 
+    \item Information about the QENS analysis from the decomposed simulation trajectory. 
+    \item Deatils of the QENS model fitting presented in the main text. 
+    \item Figures showing the QENS signal for each $Q$-bin compared with the maximum \emph{a posteriori} anisotropic model at the same $Q$-bin. 
+    \item The position and orientation probability density function for the benzene simulation. 
+\end{itemize}
 
 \section*{Acknowledgements}
 
@@ -532,7 +556,7 @@ Its position in the laboratory frame is,
 \mathbf{r}(t) = R\hat{\mathbf{u}}(t).
 \end{equation}
 %
-where $\hat{\mathbf{u}}$ is some unit factor that the change of which will be probed. 
+where the change in direction of the unit vector $\hat{\mathbf{u}}$ is being probed. 
 The intermediate scattering function for incoherent scattering is defined as, 
 %
 \begin{equation}
@@ -543,7 +567,7 @@ where $\langle\ldots\rangle$ denotes an ensemble (and for a liquid, orientationa
 Substituting $\mathbf{r}(t) = R\hat{\mathbf{u}}(t)$ and $\mathbf{Q} = \hat{\mathbf{Q}}Q$ into the above gives, 
 %
 \begin{equation}
-    I(Q, t) = \left\langle \exp{\left(iQR\hat{\mathbf{Q}}\cdot\hat{\mathbf{u}}(t)\right)} \exp{\left(-iQa\hat{\mathbf{Q}}\cdot\hat{\mathbf{u}}(0)\right)} \right\rangle,
+    I(Q, t) = \left\langle \exp{\left(iQR\hat{\mathbf{Q}}\cdot\hat{\mathbf{u}}(t)\right)} \exp{\left(-iQR\hat{\mathbf{Q}}\cdot\hat{\mathbf{u}}(0)\right)} \right\rangle,
 \end{equation}
 %
 and since the intermediate scattering function is independent of $\hat{\mathbf{Q}}$, we can average over $\hat{\mathbf{Q}}$, 
@@ -700,7 +724,7 @@ and \cref{eqn:c0} with two additional exponential decays,
 \end{equation}
 %
 The full posterior distribution for this model is shown in \cref{fig:raf_corner}. 
-The presence of the fast decay with time constant $\tau_1 = \qty{0.21}{\pico\second}$ corresponds directly with the dynamic energy range at which the decrease of Bayesian evidence for the anisotropic model occurs $\qtyrange{1.25}{1.5}{\milli\electronvolt}$, (corresponding to around $\qtyrange{0.43}{0.52}{\pico\second}$) see Figure \ref{fig:energy}. 
+The presence of the fast decay with time constant $\tau_1 = \qty{0.21}{\pico\second}$ corresponds directly with the dynamic energy range at which the decrease of Bayesian evidence for the anisotropic model occurs $\qtyrange{1.25}{1.5}{\milli\electronvolt}$, (corresponding to around $\qtyrange{0.43}{0.52}{\pico\second}$) see \cref{fig:energy}. 
 This effect implies that these fast local motions lead to the breakdown of the justifiability of the additional complexity of the anisotropic model. 
 %
 \begin{figure}
@@ -793,17 +817,11 @@ For both the isotropic and the anisotropic model, there was the sufficient evide
     \centering
     \includegraphics[width=0.5\columnwidth]{figures/si_rot_nbkg.pdf}
     \vspace{-1.5\baselineskip}
-    \caption{The negative log-Bayesian evidence for the isotropic (green) and anisotropic (pink) models for the decomposed rotational QENS spectra as a function of the number of background terms included across $Q$ at \qty{\pm0.5}{\milli\electronvolt} dynamic range.}
+    \caption{The negative log-Bayesian evidence for the isotropic (green dots) and anisotropic (pink crosses) models for the decomposed rotational QENS spectra as a function of the number of background terms included across $Q$ at \qty{\pm0.5}{\milli\electronvolt} dynamic range.}
     \label{fig:si_rot_nbkg}
     \vspace{-1\baselineskip}
     \script{si_rot_nbkg.py}
 \end{figure}
-
-\section{Emergence of High Energy Local Motions}
-\label{sec:high_energy}
-
-
-
 
 \section{Model fitting}
 \label{sec:model_fit}
@@ -835,7 +853,7 @@ and $S_{\textrm{res}}$ is the appropriate resolution function data, normalised b
 
 Nested sampling was performed for the model, given the data on incident energies $\qtylist{3.60;1.97}{\milli\electronvolt}$, simultaneously. 
 As such, when the nested sampling was performed, the model in \cref{eqn:full_exp} had either 3 or 4 global parameters for the isotropic or anisotropic models, respectively ($D^*$, $\langle u^2 \rangle$, $D_s$, $D_t$, and $D_r = D_t = D_s$ for the isotropic). 
-A single $\langle u^2 \rangle$ was to both incident energies as this parameter describes motions faster than $\omega$-dynamic range, with the same value held for both $E_i$ values and allows which appear as a flat background~\cite{Bee1988}.
+A single $\langle u^2 \rangle$ was used for both incident energies; this parameter describes motions faster than $\omega$-dynamic range and appears as a flat background~\cite{Bee1988}.
 $ E_i$-dependent parameters, including a flat background, were included at each $Q$-value for each incident energy in both models. 
 A constant normalisation term, $C_{norm}$, was fitted for each incident energy.
 $C_{norm}$ was used to normalise across $Q$ for each incident energy, to account for the non-conservation of spectral area introduced by the fast Fourier transform, and to scale to the experimental intensities.
@@ -854,7 +872,7 @@ $\theta_{max}$ & 0.2 & 1 & 0.15 & 1 & 0.18 & 30 & 1.5
 
 Due to the distributivity of addition and convolution, the convolution of the rotational and translational Lorentzian components and the Dirac $\delta$-function can be written analytically as a sum of Lorentzian functions. 
 In the limit of infinite energy range and continuous resolution, this analytical expression is mathematically identical to a numerical fast Fourier transform-based convolution.
-However, in reality, the experimental spectra were measured over a finite energy window and sampled on a discrete energy grid. 
+However, in reality, where no analytical resolution function is available, the experimental spectra were measured over a finite energy window and sampled on a discrete energy grid. 
 The Lorentzian tails are therefore truncated, and the convolution becomes discrete rather than continuous, breaking the exact equivalence between the analytic and fast Fourier transform convolutions. 
 Because the fast Fourier transform convolution naturally incorporates these finite-window and discretisation effects, it provided a representation that more closely matched the measured data. 
 For this reason, the fast Fourier transform convolution approach, using \texttt{scipy.signal.fftconvolve}, was used for model fitting.
@@ -863,7 +881,7 @@ For this reason, the fast Fourier transform convolution approach, using \texttt{
 \label{sec:exp_fit}
 
 The anisotropic model for the incoherent dynamic structure factor was modelled simultaneously, given the incoherent QENS signal at incident energies of $\qtylist{3.60;1.97}{\milli\electronvolt}$, with a $\omega$-dynamic range \qty{\pm 1.25}{\milli \electronvolt}. 
-This modelling yielded the marginal posterior distributions shown in Figure \ref{fig:hist}. 
+This modelling yielded the marginal posterior distributions shown in \cref{fig:hist}. 
 The correlation corner plot for these marginal posterior distributions is shown in~\cref{fig:si_aniso_corner}; as expected, $D_t$ and $D_s$ are slightly correlated. 
 The marginal posterior distributions of the other key parameters, $\langle u^2 \rangle$ and the flat background, as a function of $Q$ for each incident energy are shown in~\cref{fig:si_u_bkg}.
 %
@@ -905,7 +923,7 @@ The model agreement, represented by the maximum \emph{a posteriori} for each of 
 \end{figure}
 %
 
-\section{Position and Orientation Probability Density}
+\section{Position and Orientation Probability Density Function}
 \label{sec:comp_marta}
 
 The relative orientations of pairs of benzene molecules were evaluated as a function of their centre-to-centre separation for 2000 randomly chosen frames from the full benzene simulation trajectory (\cref{fig:si_angular_density}).
