@@ -3,7 +3,7 @@ cache_on_zenodo: false
 
 # Externally-hosted datasets, e.g. on Zenodo
 datasets:
-  10.5281/zenodo.18836632:
+  10.5281/zenodo.20412682:
     contents:
       # simulation real space 
       autocorrelation_samples.txt: src/data/autocorrelation_samples.txt
@@ -25,6 +25,7 @@ datasets:
       # simulation Q space
       incoh_mdanse.csv: src/data/incoh_mdanse.csv
       total_mdanse.csv: src/data/total_mdanse.csv
+      coh_mdanse.csv: src/data/coh_mdanse.csv
       rotation_only_incoh_mdanse.csv: src/data/rotation_only_incoh_mdanse.csv
       translation_only_incoh_mdanse.csv: src/data/translation_only_incoh_mdanse.csv
 
@@ -86,6 +87,9 @@ datasets:
       pLET_iso_model.pkl: src/data/pLET_iso_model.pkl
       pLET_aniso_model_samples_360.pkl: src/data/pLET_aniso_model_samples_360.pkl
       pLET_aniso_model_samples_197.pkl: src/data/pLET_aniso_model_samples_197.pkl
+      pLET_iso_model_samples_360.pkl: src/data/pLET_iso_model_samples_360.pkl
+      pLET_iso_model_samples_197.pkl: src/data/pLET_iso_model_samples_197.pkl
+
 
 # Custom file dependencies
 dependencies:
@@ -216,15 +220,32 @@ dependencies:
     - src/scripts/_fig_params.py
     - src/data/pLET_aniso_model.pkl
   src/scripts/si_model360_fit.py:
-      - src/scripts/_fig_params.py
-      - src/data/pLET_benzene_290K_360_inc.nxspe
-      - src/data/pLET_empty_360_inc.nxspe
-      - src/data/pLET_aniso_model_samples_360.pkl
+    - src/scripts/_fig_params.py
+    - src/data/pLET_benzene_290K_360_inc.nxspe
+    - src/data/pLET_empty_360_inc.nxspe
+    - src/data/pLET_aniso_model_samples_360.pkl
   src/scripts/si_model197_fit.py:
-      - src/scripts/_fig_params.py
-      - src/data/pLET_benzene_290K_197_inc.nxspe
-      - src/data/pLET_empty_197_inc.nxspe
-      - src/data/pLET_aniso_model_samples_197.pkl
+    - src/scripts/_fig_params.py
+    - src/data/pLET_benzene_290K_197_inc.nxspe
+    - src/data/pLET_empty_197_inc.nxspe
+    - src/data/pLET_aniso_model_samples_197.pkl
+  src/scripts/si_degenne.py:
+    - src/scripts/_fig_params.py
+    - src/code/iris_analysis/iris.py
+    - src/code/functions.py
+    - src/data/total_mdanse.csv
+    - src/data/incoh_mdanse.csv
+    - src/data/coh_mdanse.csv
+  src/scripts/si_iso_aniso_compare.py:
+    - src/scripts/_fig_params.py
+    - src/data/pLET_benzene_290K_360_inc.nxspe
+    - src/data/pLET_benzene_290K_197_inc.nxspe
+    - src/data/pLET_aniso_model_samples_360.pkl
+    - src/data/pLET_aniso_model_samples_197.pkl
+    - src/data/pLET_iso_model_samples_360.pkl
+    - src/data/pLET_iso_model_samples_197.pkl
+
+
 
 
 # Name of the `.tex` manuscript and corresponding `.pdf` article
@@ -233,20 +254,20 @@ ms_name: ms
 # Optimize DAG by removing unnecessary jobs upstream of cache hits?
 optimize_caching: false
 
-# Overleaf sync settings
-overleaf:
-  # Overleaf project ID (blank = disabled)
-  id: 6825df7063fda1fd75ea1ad4
-  # Perform sync on GitHub Actions?
-  gh_actions_sync: true
-  # List of files to push to Overleaf
-  push:
-    - src/tex/figures
-    - src/tex/output
-  # List of files to pull from Overleaf
-  pull:
-    - src/tex/ms.tex
-    - src/tex/bib.bib
+# # Overleaf sync settings
+# overleaf:
+#   # Overleaf project ID (blank = disabled)
+#   id: 6825df7063fda1fd75ea1ad4
+#   # Perform sync on GitHub Actions?
+#   gh_actions_sync: true
+#   # List of files to push to Overleaf
+#   push:
+#     - src/tex/figures
+#     - src/tex/output
+#   # List of files to pull from Overleaf
+#   pull:
+#     - src/tex/ms.tex
+#     - src/tex/bib.bib
 
 # Always require all input files to be present on disk for workflow to pass?
 require_inputs: true

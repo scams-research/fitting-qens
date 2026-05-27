@@ -66,7 +66,7 @@ class PletData:
         binning_factor = np.histogram(self.q.values, bins=q_bins.values)[0]
         self.binning_factor = sc.array(values = binning_factor, dims = ['q'])
         self.data = sc.rebin(self.data, q=q_bins)
-        self.data = self.data / self.binning_factor.values[1,np.newaxis]
+        self.data = self.data / float(self.binning_factor.values[1])
 
         self.q = self.data.coords['q']
         self.q_mid = (self.q[:-1] + self.q[1:]) / 2

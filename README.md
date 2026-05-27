@@ -20,10 +20,10 @@ This integrated, Bayesian evidence-based analytical framework defines a new para
 <a href="https://github.com/scams-research/fitting-qens/raw/main-pdf/ms.pdf">
 <img src="https://img.shields.io/badge/article-pdf-blue.svg?style=flat" alt="Read the article"/>
 </a>
-<!-- <a href="https://arxiv.org/abs/2501.14578">
-<img src="https://img.shields.io/badge/arXiv-2501.14578-orange.svg"/>
+  <a href="https://arxiv.org/abs/2603.06080">
+<img src="https://img.shields.io/badge/arXiv-2603.06080-orange.svg"/>
 </a>
-<a href="https://doi.org/10.1063/5.0260928">
+<!-- <a href="https://doi.org/10.1063/5.0260928">
 <img src="https://img.shields.io/badge/publication%20DOI-10.1063/5.0260928-yellow.svg?style=flat"/>
 </a> -->
 <br><br>
