@@ -25,6 +25,7 @@ datasets:
       # simulation Q space
       incoh_mdanse.csv: src/data/incoh_mdanse.csv
       total_mdanse.csv: src/data/total_mdanse.csv
+      coh_mdanse.csv: src/data/coh_mdanse.csv
       rotation_only_incoh_mdanse.csv: src/data/rotation_only_incoh_mdanse.csv
       translation_only_incoh_mdanse.csv: src/data/translation_only_incoh_mdanse.csv
 
@@ -86,6 +87,9 @@ datasets:
       pLET_iso_model.pkl: src/data/pLET_iso_model.pkl
       pLET_aniso_model_samples_360.pkl: src/data/pLET_aniso_model_samples_360.pkl
       pLET_aniso_model_samples_197.pkl: src/data/pLET_aniso_model_samples_197.pkl
+      pLET_iso_model_samples_360.pkl: src/data/pLET_iso_model_samples_360.pkl
+      pLET_iso_model_samples_197.pkl: src/data/pLET_iso_model_samples_197.pkl
+
 
 # Custom file dependencies
 dependencies:
@@ -225,6 +229,25 @@ dependencies:
       - src/data/pLET_benzene_290K_197_inc.nxspe
       - src/data/pLET_empty_197_inc.nxspe
       - src/data/pLET_aniso_model_samples_197.pkl
+  src/scripts/si_degenne.py:
+    - src/scripts/_fig_params.py
+    - src/code/iris_analysis/iris.py
+    - src/code/functions.py
+    - src/data/total_mdanse.csv
+    - src/data/incoh_mdanse.csv
+    - src/data/coh_mdanse.csv
+
+  src/scripts/si_iso_aniso_compare.py:
+    - src/scripts/_fig_params.py
+    - src/data/pLET_benzene_290K_360_inc.nxspe
+    - src/data/pLET_benzene_290K_197_inc.nxspe
+    - src/data/pLET_aniso_model_samples_360.pkl
+    - src/data/pLET_aniso_model_samples_197.pkl
+    - src/data/pLET_iso_model_samples_360.pkl
+    - src/data/pLET_iso_model_samples_197.pkl
+    - src/tex/output/evidence_aniso_let.txt
+    - src/tex/output/evidence_iso_let.txt
+
 
 
 # Name of the `.tex` manuscript and corresponding `.pdf` article
