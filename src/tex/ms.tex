@@ -133,7 +133,7 @@ The incoherent and total dynamic structure factors were calculated from MD simul
 \cref{fig:structure} compares the experimental QENS data (collected at the IRIS instrument, ISIS Neutron and Muon Source~\cite{Carlile1992}, using the PG 002 analyser crystal, which gives a dynamic range in $Q$ of $\qtyrange{0.5}{1.8}{\per\angstrom}$ and in $\omega$ of \qty{\pm 0.4}{\milli\electronvolt}, see \ref{sec:qens} for further experimental details).
 We present the incoherent-only and total dynamic structure factors, as characterised by the elastic peak integral and the reduced second spectral moment, respectively, as descriptors of liquid structure and dynamics~\cite{Armstrong2016}. 
 Although the simulations generally capture the structure and dynamics, there is a discrepancy between the experimental and incoherent-only simulation data.
-This feature is on the length scale of a single benzene molecule, i.e., $Q\approx\qty{1.3}{\per\angstrom}$ corresponding to around $\qty{4.8}{\angstrom}$, and is indicative of de Gennes narrowing, which has been observed previously in the coherent dynamic structure factor~\cite{Arbe2023, Wu2018}. 
+This feature is on the length scale of a single benzene molecule, i.e., $Q\approx\qty{1.3}{\per\angstrom}$ corresponding to around $\qty{4.8}{\angstrom}$, and is indicative of de Gennes narrowing (shown in \ref{sec:degennes}), which has been observed previously in the coherent dynamic structure factor~\cite{Arbe2023, Wu2018}. 
 This anomaly indicates that even for hydrogenous benzene, the common approach to overlook coherent scattering is not suitable~\cite{Sarter2024}, necessitating either more complex fitting models that represent coherent scattering, or making use of p-QENS, which allows the coherent and incoherent dynamic structure factors to be separated~\cite{Nilsen2017}.
 %
 \begin{figure}
@@ -318,7 +318,7 @@ Therefore, we measured the QENS at the LET instrument (ISIS Neutron and Muon Sou
 We chose the largest $\omega$-dynamic range to account for the possibility of faster spinning that was observed in simulation. 
 Polarisation analysis allows for the decomposition of the total dynamic structure factor into its individual components; this means that the Bayesian evidence for the two analysis models can be found given the purely incoherent data. 
 There was strong support for the more complex anisotropic model, with a log-Bayesian evidence of \variable{output/evidence_aniso_let.txt}, compared to \variable{output/evidence_iso_let.txt} for the isotropic model, given the noisy experimental data. 
-\cref{fig:qens} compares the $Q$-dependent anisotropic model with the measured LET data at each incident energy, showing strong agreement between the two; the ratio between the model and the experiment shows noise, with no structuring present in the error (see~\ref{sec:model_fit} for analysis details). 
+\cref{fig:qens} compares the $Q$-dependent anisotropic model with the measured LET data at each incident energy (this is compared with the lower-evidence isotropic model in \cref{fig:si_iso_aniso_compare}), showing strong agreement between the two; the ratio between the model and the experiment shows noise, with no structuring present in the error (see~\ref{sec:model_fit} for analysis details). 
 %
 \begin{figure*}
     \centering
@@ -403,7 +403,7 @@ The authors would like to thank Prof. Neil Allan for his insightful feedback on 
 
 Raw experimental QENS data is available from the ISIS Neutron and Muon Source Data Journal~\cite{iris_data, plet_data}. 
 The data used to generate the figures in this paper are available on Zenodo~\cite{Richardson2026} and all of the code required to recreate them can be found, as a \textsc{showyourwork} workflow in the appropriate GitHub repository~\cite{Richardson2026a}, under MIT (code) and CC BY-SA 4.0 (figures and text) licenses.
-Also present in this repository is the custom Python  code used to perform the analysis presented in this work.  
+Also present in this repository is the custom Python code used to perform the analysis presented in this work, which is similarly fully computationally reproducible.  
 
 \bibliographystyle{achemso}
 \bibliography{bib}
@@ -489,6 +489,24 @@ Variations in instrumental detector efficiency were corrected using a “white-b
 A frozen benzene measurement at \qty{260}{\kelvin} was used as an approximation of the instrumental resolution function. 
 This frozen sample is not a perfect representation of the true resolution, as some molecular mobility remains at this temperature. 
 Although vanadium is often used to estimate instrumental resolution, its scattering profile differs from that of the sample, particularly in the high-energy-transfer tails, which can introduce systematic distortions in the convolution during the final model.
+
+\section{Evidence of de Gennes Narrowing}
+\label{sec:degennes}
+
+In the main text, we attribute the discrepancy between the incoherent and total scattering, showing the dynamic structure factor peak integral and reduced second spectral moment) to de Gennes narrowing. 
+Strictly, de Gennes narrowing is the narrowing of the QENS signal at wavevectors corresponding to peaks in the static structure factor. 
+To show that what is observed here is indeed de Gennes narrowing, in \cref{fig:si_degenne} we include the coherent contribution to the reduced second spectral moment plot from \cref{fig:structure}b.
+This shows the depression of the coherent signal that is indicative of de Gennes narrowing. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\columnwidth]{figures/si_degenne.pdf}
+    \vspace{-1.5\baselineskip}
+    \caption{An adaptation of \cref{fig:structure}b to include the coherent contribution showing the characteristic depression of de Gennes narrowing.}
+    \label{fig:si_degenne}
+    \vspace{-1\baselineskip}
+    \script{si_degenne.py}
+\end{figure}
 
 \section{Translation Diffusion Analysis}
 \label{sec:kinisi}
@@ -925,6 +943,18 @@ The model agreement, represented by the maximum \emph{a posteriori} for each of 
 \end{figure}
 %
 
+In the interest of clarity, we compare the maximum \emph{a-posteriori} for the isotropic and anisotropic models with the data in \cref{fig:si_iso_aniso_compare}. 
+There appears to be some structuring present in the ratio between the maximum \emph{a-posteriori} isotropic model and the data (specifically the model underestimates the dynamic structure factor at small $\omega$ and $\qty{1.1}{\per\angstrom} \leq Q < Q_{\textrm{max}}$), which is not observed for the anisotropic model. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/si_iso_aniso_compare.pdf}
+    \caption{A comparison of the isotropic and anisotropic model maximum \emph{a posteriori} given experimental LET data at incident energies of $\qtylist{1.97;3.60}{\milli\electronvolt}$ mirroring \cref{fig:qens}.}
+    \label{fig:si_iso_aniso_compare}
+    \script{si_iso_aniso_compare.py}
+\end{figure}
+
+
 \section{Position and Orientation Probability Density Function}
 \label{sec:comp_marta}
 
@@ -957,24 +987,5 @@ From the experimental analysis of total neutron scattering data from benzene, Fa
 In our simulations, we observe some presence of the `T' and `Y' configurations, but much less than in the experiment.
 Therefore, we do not see evidence of the tightly bound $\pi$-stacked structures. 
 We believe that the presence of such dimeric structures may be related to the greater rotational anisotropy observed in our experiment than in the simulation analysis. 
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.4\columnwidth]{figures/si_degenne.pdf}
-    \vspace{-1.5\baselineskip}
-    \caption{Orientational selectivity by distance showing the centre-to-centre radial distribution function, angular distribution function of molecular pairs and the correlation plot between them.}
-    \label{fig:si_degenne}
-    \vspace{-1\baselineskip}
-    \script{si_degenne.py}
-\end{figure}
-
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{figures/si_iso_aniso_compare.pdf}
-    \caption{Comparison between the maximum \emph{a posteriori} for the anisotropic model (green) given the binned p-LET data (blue, with errorbars indicating a single standard deviation) at an incident energy of \qty{1.97}{\milli\electronvolt}, at the \num{14} $Q$-bins used.}
-    \label{fig:si_iso_aniso_compare}
-    \script{si_iso_aniso_compare.py}
-\end{figure}
 
 \end{document}
