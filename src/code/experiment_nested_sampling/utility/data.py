@@ -13,19 +13,19 @@ q_lim_low = 0.6
 q_lim_high = 1.8
 
 data360 = PletData(
-    str(paths.data) + "/benzene_290_360_inc.nxspe",
+    str(paths.data) + "/pLET_benzene_290K_360_inc.nxspe",
     3.60,
     omega_lims=[-omega_lim, omega_lim],
     q_lims=[q_lim_low, q_lim_high],
 )
 empty360 = PletData(
-    str(paths.data) + "/empty_360_inc.nxspe",
+    str(paths.data) + "/pLET_empty_360_inc.nxspe",
     3.60,
     omega_lims=[-omega_lim, omega_lim],
     q_lims=[q_lim_low, q_lim_high],
 )
 res360 = PletData(
-    str(paths.data) + "/benzene_260_360_inc.nxspe",
+    str(paths.data) + "/pLET_benzene_260K_360_inc.nxspe",
     3.60,
     omega_lims=[-omega_lim, omega_lim],
     q_lims=[q_lim_low, q_lim_high],
@@ -54,19 +54,19 @@ q_lim_low = 0.55
 q_lim_high = 1.58
 
 data197 = PletData(
-    str(paths.data) + "/benzene_290_197_inc.nxspe",
+    str(paths.data) + "/pLET_benzene_290K_197_inc.nxspe",
     1.97,
     omega_lims=[-omega_lim, omega_lim],
     q_lims=[q_lim_low, q_lim_high],
 )
 empty197 = PletData(
-    str(paths.data) + "/empty_197_inc.nxspe",
+    str(paths.data) + "/pLET_empty_197_inc.nxspe",
     1.97,
     omega_lims=[-omega_lim, omega_lim],
     q_lims=[q_lim_low, q_lim_high],
 )
 res197 = PletData(
-    str(paths.data) + "/benzene_260_197_inc.nxspe",
+    str(paths.data) + "/pLET_benzene_260K_197_inc.nxspe",
     1.97,
     omega_lims=[-omega_lim, omega_lim],
     q_lims=[q_lim_low, q_lim_high],

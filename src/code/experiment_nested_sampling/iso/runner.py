@@ -138,5 +138,5 @@ if __name__ == "__main__":
         sampler.run_nested(print_progress=True)
         ns_res = sampler.results
 
-with open("./pLET_iso_model.pkl", "wb") as f:
-    pickle.dump(ns_res.asdict(), f)
+    with open("./pLET_iso_model.pkl", "wb") as f:
+        pickle.dump(ns_res.asdict(), f)
