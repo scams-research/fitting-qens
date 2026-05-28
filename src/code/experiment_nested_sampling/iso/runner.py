@@ -125,7 +125,7 @@ def prior_transform(u):
 
 
 if __name__ == "__main__":
-    nworkers = 128
+    nworkers = 4
     with Pool(processes=nworkers) as pool:
         sampler = dynesty.NestedSampler(
             log_likelihood2,
@@ -138,5 +138,5 @@ if __name__ == "__main__":
         sampler.run_nested(print_progress=True)
         ns_res = sampler.results
 
-    with open("./pLET_iso_model.pkl", "wb") as f:
+    with open(str(paths.data) + "/pLET_iso_model.pkl", "wb") as f:
         pickle.dump(ns_res.asdict(), f)

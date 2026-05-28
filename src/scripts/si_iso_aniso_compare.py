@@ -253,6 +253,6 @@ bot_ax_right.text(
 )
 
  
-plt.savefig(paths.figures / "si_aniso_iso_compare.pdf",
+plt.savefig(paths.figures / "si_iso_aniso_compare.pdf",
             bbox_inches="tight", pad_inches=0.01)
 plt.close()
