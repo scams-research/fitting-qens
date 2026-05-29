@@ -464,11 +464,11 @@ The can was sealed with indium wire, and then loaded into an Orange cryostat on 
 A total of 4 incident energies, $E_i$, were measured using repetition rate multiplication: $\qtylist{8.61;3.60;1.95;1.23}{\milli\electronvolt}$. 
 The energy resolutions at these energies were \qty{300}{\micro\electronvolt}, \qty{85}{\micro\electronvolt}, \qty{45}{\micro\electronvolt} and \qty{15}{\micro\electronvolt} and the maximum accessible energy dynamic ranges were $\qty{\pm6.88}{\milli\electronvolt}$, $\qty{\pm2.88}{\milli\electronvolt}$, $\qty{\pm1.576}{\milli\electronvolt}$ and $\qty{\pm0.992}{\milli\electronvolt}$ respectively.
 The two intermediate incident energies were used for the analysis, as they provide sufficient resolution and dynamic range to capture the expected dynamics in benzene.
-An empty can was used as a background, and a frozen benzene sample at \qty{260}{\kelvin} was measured and used for the resolution function (see detailed discussion in \ref{sec:data-red}).
+An empty can was used as a background, and a frozen benzene sample at \qty{260}{\kelvin} was measured and used for the resolution function (see detailed discussion of data reduction below).
 
 Polarisation analysis on LET was achieved using a polarised neutron beam, from an $m=5$ \ce{Fe}/\ce{Si} supermirror V-cavity, and the scattered polarisation was analysed with a hyperpolarised \ce{^3He} spin-filter cell. 
 A current-ramped precession coil $\pi$-flipper is placed after the polariser to measure the spin-flip and non-spin flip intensities, $S_{\mathrm{sf}}$ and $S_{\mathrm{nsf}}$, as a function of scattering angle, $\theta$, and energy transfer, $\omega$.
-Measurements of the time-dependent polarisation efficiency of the instrument taken using a monitor in the direct beam were used to correct the raw spin-flip and non-spin-flip intensities according to the procedure described in \cite{Arbe2020, Cassella2019}, following which they were converted to dynamic structure factors, $S{\mathrm{sf}}(Q, \omega)$ and $S_{\mathrm{nsf}}(Q, \omega)$. 
+Measurements of the time-dependent polarisation efficiency of the instrument taken using a monitor in the direct beam were used to correct the raw spin-flip and non-spin-flip intensities according to the procedure described in \cite{Arbe2020, Cassella2019}, following which they were converted to dynamic structure factors, $S_{\mathrm{sf}}(Q, \omega)$ and $S_{\mathrm{nsf}}(Q, \omega)$. 
 The spin-incoherent dynamic structure factor $S_{\mathrm{inc}}$ was finally obtained from the corrected spin flip dynamic structure factor according to:
 %
 \begin{equation}
@@ -494,26 +494,26 @@ Although vanadium is often used to estimate instrumental resolution, its scatter
 \section{Evidence of de Gennes Narrowing}
 \label{sec:degennes}
 
-In the main text, we attribute the discrepancy between the incoherent and total scattering, showing the dynamic structure factor peak integral and reduced second spectral moment) to de Gennes narrowing. 
-Strictly, de Gennes narrowing is the narrowing of the QENS signal at wavevectors corresponding to peaks in the static structure factor. 
-To show that what is observed here is indeed de Gennes narrowing, in \cref{fig:si_degenne} we include the coherent contribution to the reduced second spectral moment plot from \cref{fig:structure}b.
-This shows the depression of the coherent signal that is indicative of de Gennes narrowing. 
-
-\begin{figure}
+We compare the dynamic structure factor peak integral and reduced second spectral moment of the incoherent and total dynamic structure factor in \cref{fig:structure} of the main text and attribute the discrepancy between these to de Gennes narrowing~\cite{DeGennes1959}. 
+Strictly, de Gennes narrowing is the narrowing of the coherent dynamic structure factor at wavevectors corresponding to peaks in the static structure factor. 
+To show that what is observed here is indeed de Gennes narrowing, in \cref{fig:si_degenne} we include the coherent contribution in the reduced second spectral moment plot from \cref{fig:structure}b, which shows the depression of the coherent signal, indicative of de Gennes narrowing. 
+%
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.4\columnwidth]{figures/si_degenne.pdf}
     \vspace{-1.5\baselineskip}
-    \caption{An adaptation of \cref{fig:structure}b to include the coherent contribution showing the characteristic depression of de Gennes narrowing.}
+    \caption{An adaptation of \cref{fig:structure}b to include the coherent contribution showing the characteristic depression of the coherent reduced second moment that is indicative of de Gennes narrowing.}
     \label{fig:si_degenne}
     \vspace{-1\baselineskip}
     \script{si_degenne.py}
 \end{figure}
+%
 
 \section{Translation Diffusion Analysis}
 \label{sec:kinisi}
 
-To perform the translational diffusion analysis, the molecular dynamics trajectory was subsampled at every \qty{5}{\pico\second} when loaded into the \textsc{kinisi} software~\cite{McCluskey2024}. 
-The centre-of-mass functionality~\cite{Richardson2025} was used to find the benzene mean-squared displacements at lag times of $\qtyrange{5}{10000}{\pico\second}$ in intervals of \qty{5}{\pico\second}. 
+The translational diffusion analysis made use of the \textsc{kinisi} software~\cite{McCluskey2024}. 
+The molecular dynamics trajectory was subsampled at every \qty{5}{\pico\second} and the centre-of-mass functionality~\cite{Richardson2025} was used to find the benzene mean-squared displacements at lag times of $\qtyrange{5}{10000}{\pico\second}$ in intervals of \qty{5}{\pico\second}. 
 The Bayesian regression scheme implemented in \textsc{kinisi} was then used to estimate the self-diffusion coefficient~\cite{McCluskey2024a}, with the start of the diffusion regime fitting window at \qty{500}{\pico\second}.
 
 \section{Mathematical Derivations of Models}
@@ -529,15 +529,15 @@ The Wigner $D$-functions, which form an orthonormal basis set for the 3D rotatio
     \lambda_{lm} = D_tl(l+1) + m^2 (D_s-D_t), 
 \end{equation}
 %
-where $D_t$ and $D_s$ are the rotational diffusion coefficients for the benzene tumbling and spinning, respectively, $l$ is the magnitude of the angular momentum vector, and $m$ is the projection of that vector\footnote{These are analogous to the $l$ and $m_l$ orbital angular and magnetic quantum numbers}. 
-The rank-$l$ correlation function, $C_l(t, \theta)$ is then defined as~\cite{Favro1960}, 
+where $D_t$ and $D_s$ are the rotational diffusion coefficients for the benzene tumbling and spinning, respectively, $l$ is the magnitude of the angular momentum vector, and $m$ is the projection of that vector~\footnote{These are analogous to the $l$ and $m_l$ orbital angular and magnetic quantum numbers}. 
+The rank-$l$ correlation function, $C_l(t, \theta)$ is then defined as, 
 %
 \begin{equation}
-    C_l(t, \theta) = \sum_{m=-l}^{l} [d^l_{m0}(\theta)] ^ 2 \exp{\left(-        \lambda_{lm}t\right)}, 
+    C_l(t, \theta) = \sum_{m=-l}^{l} [d^l_{m0}(\theta)] ^ 2 \exp{\left(-\lambda_{lm}t\right)}, 
     \label{eqn:rankl}
 \end{equation}
 %
-where $d^l_{m0}$ is the appropriate element from the Wigner small-$d$ matrix~\cite{Wigner1964}. 
+where $d^l_{m0}$ is the appropriate element from the Wigner small-$d$ matrix~\cite{Favro1960, Wigner1964}. 
 
 Using \cref{eqn:rankl}, it is then possible to find any rank correlation function. 
 For example, in the main text, we discuss the rotational autocorrelation function, $G_{\theta}(t)$, which follows the rank-\num{2} correlation function, 
@@ -547,7 +547,7 @@ For example, in the main text, we discuss the rotational autocorrelation functio
 C_2(t, \theta) = \frac{1}{4} \left(3 \sin^{2}{\left(\theta \right)} - 2\right)^{2} \exp{\left[-t 6D_{t} \right]} + 12 \exp{\left[-t (4 D_{s} + 2 D_{t})\right]} \sin^{4}{\left(\frac{\theta}{2} \right)} \cos^{4}{\left(\frac{\theta}{2} \right)} + \frac{3}{4} \exp{\left[-t (D_{s} + 5 D_{t})\right]} \sin^{2}{\left(2 \theta \right)}.
 \end{equation}
 %
-This result is equivalent to the Woessner equation~\cite{Woessner1964}. 
+This result is equivalent to the Woessner equation used in previous NMR analysis of benzene dynamics~\cite{Woessner1964, Witt2000}. 
 From this, the functions that describe the rotational autocorrelation functions for $\theta=\qty{0}{\degree}$ and $\theta=\qty{90}{\degree}$, i.e., parallel and perpendicular to the principal axis of rotation, can be obtained.
 These are
 %
@@ -563,7 +563,6 @@ and
     \label{eqn:c90}
 \end{equation}
 %
-These are given in the main text and can also be obtained from the Woessner equation~\cite{Woessner1964}. 
 These can be rationalised, as the vector parallel ($\theta = 0$) to the principal axis is unaffected by the spinning motion, and hence contains only $D_t$. 
 Meanwhile, the perpendicular vector is affected by both spinning and tumbling.
 
@@ -693,7 +692,10 @@ and for $l=0$ we get the elastic line, $j_0^2(QR)\delta(\omega)$, where $\delta(
 Hence, the total dynamic structure factor is, 
 %
 \begin{equation}
-    S(Q, \omega) = \frac{1}{2\pi} \left(j_0^2(QR) \delta(\omega) + 3j_1^2(QR)\left[\frac{1}{\pi}\frac{D_s+D_t}{\omega^2+(D_s+D_t)^2}\right] + 5j_2^2(QR) \left[\frac{1}{4}\frac{1}{\pi}\frac{6D_t}{\omega^2 + (6D_t)^2} + \frac{3}{4} \frac{1}{\pi} \frac{4D_s + 2D_t}{\omega^2 + (4D_s + 2D_t)^2} \right]\right).
+    \begin{aligned}
+    S(Q, \omega) = \frac{1}{2\pi} \Bigg( & j_0^2(QR) \delta(\omega) + 3j_1^2(QR)\left[\frac{1}{\pi}\frac{D_s+D_t}{\omega^2+(D_s+D_t)^2}\right] \\
+     & + 5j_2^2(QR) \left[\frac{1}{4}\frac{1}{\pi}\frac{6D_t}{\omega^2 + (6D_t)^2} + \frac{3}{4} \frac{1}{\pi} \frac{4D_s + 2D_t}{\omega^2 + (4D_s + 2D_t)^2} \right]\Bigg).
+    \end{aligned}
 \end{equation}
 %
 We rewrite this in the form of different $\Gamma_x$ values in \cref{eqn:fit}.
@@ -715,7 +717,7 @@ The resulting rotational autocorrelation functions can be found in \cref{fig:sim
 To extract the tumbling and spinning rotational diffusion coefficients, the data were modelled simultaneously using \cref{eqn:c0} and \cref{eqn:c90}, augmented by additional Gaussian or exponential decay terms to account for dynamics not described by these models.
 Bayesian model selection, via nested sampling~\cite{Skilling2004} using the \textsc{dynesty}~\cite{Speagle2020}, was used to determine how many additional Gaussian and exponential decay functions were necessary to fully describe the observed data, with the Bayesian evidence values given in \cref{tab:raf_logz}. 
 %
-\begin{table}
+\begin{table}[h]
     \caption{Log-Bayesian evidence values for different models used to describe the observed rotational autocorrelation function, the model with the highest Bayesian evidence shown in bold (the number of parameters for each model is given in square brackets). In the column where $0$ is added to $G_{\qty{90}{\degree}}(t)$, $A_{\mathcal{N}}$ is a normalisation applied to $G_{\qty{0}{\degree}}(t)$ or $G_{\qty{90}{\degree}}(t)$, and $\mathcal{N}(0, \sigma)$ indicates a Gaussian distribution, centred on $0$ with a standard deviation of $\sigma$.}
     \label{tab:raf_logz}
     \begin{tabular}{ c | c | c}
@@ -744,14 +746,14 @@ and \cref{eqn:c0} with two additional exponential decays,
     G_{\qty{0}{\degree}}(t) = A_1 \exp{\left(-t6D_t\right)} + A_2\exp{\left(\frac{-t}{\tau_1}\right)} + (1 - A_1 - A_2)\exp{\left(\frac{-t}{\tau_2}\right)},
 \end{equation}
 %
-The full posterior distribution for this model is shown in \cref{fig:raf_corner}. 
+The full posterior distribution for this model is shown, as a corner plot, in \cref{fig:raf_corner}. 
 The fast decay, with time constant $\tau_1 = \qty{0.21}{\pico\second}$, is related to the dramatic decrease observed in the Bayesian evidence at $\qty{1.5}{\milli\electronvolt}$ (corresponding to around $\qtyrange{0.43}{0.52}{\pico\second}$). 
-This further justified the argument made in the main text that it is the presence of fast motions, not present in either analytical model, which leads to the decrease in Bayesian evidence. 
+This further justifies the argument made in the main text that it is the presence of fast motions, not present in either analytical model, which leads to the decrease in Bayesian evidence. 
 %
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{figures/si_raf_corner.pdf}
-    \caption{Corner plot showing the posterior distribution of parameters for the highest evidence model for the rotational autocorrelation function data.}
+    \caption{Corner plot showing the posterior distribution of parameters for the highest evidence model given the rotational autocorrelation function data.}
     \label{fig:raf_corner}
     \script{si_raf_chain.py}
 \end{figure}
@@ -787,21 +789,20 @@ where $\alpha$ and $\beta$ are fitting parameters, the integral is then found as
 \begin{equation}
     \tau_{\textrm{eff}, \theta} = \frac{\alpha_{\theta}}{\beta_\theta}\Gamma\left(\frac{1}{\beta_\theta}\right).
 \end{equation}
-This approach introduces a subtle inconsistency: \cref{eqn:c90} describes the correlation function as the sum of two exponential functions with different decay rates, whereas the application of the integral at the timescale yields a single effective timescale.
+This approach introduces a subtle inconsistency: \cref{eqn:c90} describes, for $\theta=\qty{0}{\degree}$, the correlation function as the sum of two exponential functions with different decay rates, whereas the application of the integral at the timescale yields a single effective timescale.
 This inconsistency brings doubt into the previously determined values of $D_s$ and $D_t$.  
 
 Applying the approach taken in the literature to our simulation data, gives effective characteristic times of $\tau_{\textrm{eff}, \qty{90}{\degree}} = \variable{output/lit_approach_t90.txt}$ and $\tau_{\textrm{eff}, \qty{0}{\degree}} = \variable{output/lit_approach_t0.txt}$. 
 Using Eqs.~\ref{eqn:eff90} and~\ref{eqn:eff0}, we can find rotational diffusion coefficients of $D_t=\variable{output/lit_approach_Dt.txt}$ and $D_s = \variable{output/lit_approach_Ds.txt}$. 
 These are in good agreement with the literature values presented in previous work~\cite{Laaksonen1998, Witt2000, Schwartz2005, Fu2011}.
-
-However, using our simulation data, we can apply Bayesian model selection to determine whether there is sufficient evidence for the more complex \cref{eqn:exp} over the conceptually simpler stretched-exponential function.
-As noted previously, the log-Bayesian evidence for our analytical model for the rotational autocorrelation functions is \variable{output/best_raf_evidence.txt}, compared to \variable{output/lit_approach_evidence.txt} for fitting a stretched exponential function to each rotational autocorrelation function, i.e., there is strong support for the more complex \cref{eqn:exp}. 
+However, to our simulation data, we can apply Bayesian model selection to determine whether there is sufficient evidence for the more complex \cref{eqn:exp} over the conceptually simpler stretched-exponential function.
+The log-Bayesian evidence for our analytical model for the rotational autocorrelation functions is \variable{output/best_raf_evidence.txt}, compared to \variable{output/lit_approach_evidence.txt} for fitting a stretched exponential function to each rotational autocorrelation function, i.e., there is strong support for the more complex \cref{eqn:exp}. 
 
 \section{QENS Signal from Decomposed Trajectory}
 \label{sec:decomp}
 
-To generate the rotational-only simulation trajectory, each benzene molecule was re-centred relative to its molecular centre of mass at $t = \qty{0}{\nano\second}$ for every frame within the full trajectory, with the centre of mass computed via the \emph{pseudo} centre-of-mass re-centring method described in \cite{Richardson2025}. 
-This molecular re-centring was applied at each simulation time step in the trajectory, removing all translational motion while preserving molecular rotation.
+To generate the rotational-only simulation trajectory, each benzene molecule was re-centred relative to its molecular centre of mass at $t = \qty{0}{\nano\second}$ for every frame within the full trajectory, with the centre of mass computed via the \emph{pseudo} centre-of-mass recentering method~\cite{Richardson2025}. 
+This molecular recentring was applied at each simulation time step in the trajectory, removing all translational motion while preserving molecular rotation.
 A complementary translational simulation trajectory was constructed by rigidly fixing the intra-molecular coordinates of each benzene molecule relative to its molecular centre of mass at $t = \qty{0}{\nano\second}$, resulting in a trajectory containing only the translational motion of each molecule.
 
 %MDANSE settings binning etc
@@ -811,16 +812,16 @@ The rotational spectrum exhibits an elastic contribution, represented by a Dirac
 The amplitude of this elastic component follows the decay of the zeroth-order Bessel function evaluated at the molecular radius of benzene ($\sim\qty{2.48}{\angstrom}$) as a function of $Q$, in agreement with theoretical expectations~\cite{Johnson2013}, as illustrated in \cref{fig:si_decomp}b. 
 The independent spectra can be re-convolved to reconstruct the incoherent simulated spectra within the dynamical range of interest with minimal loss, as shown in Figs.~\ref{fig:si_decomp}c and \ref{fig:si_decomp}d. 
 The only notable discrepancy occurs at very high $Q$, where the re-convolved spectrum reproduces the correct shape but underestimates the amplitude. 
-This discrepancy was attributed to numerical effects, as the signal intensity in this region is extremely low, or the potential of unaccounted for roto-translational coupling. 
+This discrepancy may be attributed to numerical effects, as the signal intensity in this region is extremely low, or unaccounted for roto-translational coupling. 
 %
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\columnwidth]{figures/si_four_panel_decomp.pdf}
     \vspace{-1.5\baselineskip}
     \caption{Simulation decomposition: 
         (a) Exemplary rescaled translational (pink) and rotational (green) spectra demonstrating the structural delta peak in the rotational spectra at $Q=\qty{0.738}{\per\angstrom}$, 
         (b) agreement between the decay of the structural $\delta$-function with the zeroth order Bessel function ($R = \qty{2.48}{\angstrom}$)
-        (c) Comparison of the first \num{6} simulated incoherent spectra (pink) ($Q_{mid} = \qtylist{0.50;0.62;0.74;0.86;0.98;1.10}{\per\angstrom}$) and the re-convolved decomposed spectra (green dashed).
+        (c) Comparison of the first \num{6} simulated incoherent spectra (pink) ($Q_{\textrm{mid}} = \qtylist{0.50;0.62;0.74;0.86;0.98;1.10}{\per\angstrom}$) and the re-convolved decomposed spectra (green dashed).
         (d) Ratio of full simulated incoherent spectra to re-convolved decomposed spectra.}
     \label{fig:si_decomp}
     \vspace{-1\baselineskip}
@@ -832,9 +833,9 @@ Models were fit to the rotation-only spectra produced from the decomposed rotati
 To determine whether a flat background term was required at each $Q$, the Bayesian evidence was found for a series of 13 models given data, which was binned into the same \num{12} $Q$-bins as the IRIS data, progressively increasing the number of flat background components. 
 Background terms were introduced sequentially from the highest to the lowest $Q$.
 This ordering reflects the fact that larger $Q$-values probe shorter length scales and therefore faster dynamics, which are more likely to lie outside the instrumental $\omega$-dynamic range of the IRIS spectrometer ($\qty{\pm 0.4}{\milli\electronvolt}$) and manifest as an approximately flat contribution to the spectra. 
-For both the isotropic and the anisotropic model, there was the sufficient evidence to fit \num{6} background terms at ($Q$-bin midpoints $\qtylist{1.21; 1.33; 1.45; 1.57; 1.69; 1.81}{\angstrom}$) with log-Bayesian evidences of \num{-99.5} and \num{-71.0} respectively, justifying the additional complexity of the anisotropic model. 
+For both the isotropic and the anisotropic model, there was the sufficient evidence to fit \num{6} background terms at ($Q_{\textrm{mid}} = \qtylist{1.21; 1.33; 1.45; 1.57; 1.69; 1.81}{\angstrom}$) with log-Bayesian evidences of \num{-99.5} and \num{-71.0} respectively, justifying the additional complexity of the anisotropic model. 
 %
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.5\columnwidth]{figures/si_rot_nbkg.pdf}
     \vspace{-1.5\baselineskip}
@@ -843,6 +844,7 @@ For both the isotropic and the anisotropic model, there was the sufficient evide
     \vspace{-1\baselineskip}
     \script{si_rot_nbkg.py}
 \end{figure}
+%
 
 \section{Model fitting}
 \label{sec:model_fit}
@@ -872,7 +874,7 @@ j_0^2(QR)\,\delta(\omega) + 3\,j_1^2(QR)
 %
 and $S_{\textrm{res}}$ is the appropriate resolution function data, normalised by the sum of its intensity.
 
-Nested sampling was performed for the model, given the data on incident energies $\qtylist{3.60;1.97}{\milli\electronvolt}$, simultaneously. 
+Nested sampling was performed for the model, given the data at incident energies $\qtylist{3.60;1.97}{\milli\electronvolt}$, simultaneously. 
 As such, when the nested sampling was performed, the model in \cref{eqn:full_exp} had either 3 or 4 global parameters for the isotropic or anisotropic models, respectively ($D^*$, $\langle u^2 \rangle$, $D_s$, $D_t$, and $D_r = D_t = D_s$ for the isotropic). 
 A single $\langle u^2 \rangle$ was used for both incident energies; this parameter describes motions faster than $\omega$-dynamic range and appears as a flat background~\cite{Bee1988}.
 $ E_i$-dependent parameters, including a flat background, were included at each $Q$-value for each incident energy in both models. 
@@ -880,10 +882,11 @@ A constant normalisation term, $C_{norm}$, was fitted for each incident energy.
 $C_{norm}$ was used to normalise across $Q$ for each incident energy, to account for the non-conservation of spectral area introduced by the fast Fourier transform, and to scale to the experimental intensities.
 To fulfil the characteristics of a Dirac delta function (integrates to $1$), the delta function intensity at $Q = 0$ was defined as $\delta(\omega)^{-1}$.
 For all models, the radius of gyration $R$ was fixed to the radius of the benzene molecule (\qty{2.48}{\angstrom}). 
-All model priors were uniform priors of the form  $\theta \in [\theta_{\min}, \theta_{\max}]$ over the following ranges:
-
+All model priors were uniform priors of the form  $\theta \in [\theta_{\min}, \theta_{\max})$, where $\theta_{\min}$ and $\theta_{\max}$ for each parameter are given in~\cref{tab:model_priors}.
+%
+\begin{table}[h]
+\caption{The model prior minimum and maximum values for each parameter.}
 \label{tab:model_priors}
-\begin{table}[!ht]
 \begin{tabular}{l|l|l|l|l|l|l|l}
  & $D^*$ & $D_r$ & $D_t$ & $D_s$ & $\langle u \rangle$ & $C_{norm}$ & $bkg$ \\ \hline
 $\theta_{min}$ & 0.01 & 0.01 & 0.001 & 0.06 & 0.001 & 0.01 & 0.01 \\
@@ -906,7 +909,7 @@ This modelling yielded the marginal posterior distributions shown in \cref{fig:h
 The correlation corner plot for these marginal posterior distributions is shown in~\cref{fig:si_aniso_corner}; as expected, $D_t$ and $D_s$ are slightly correlated. 
 The marginal posterior distributions of the other key parameters, $\langle u^2 \rangle$ and the flat background, as a function of $Q$ for each incident energy are shown in~\cref{fig:si_u_bkg}.
 %
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/si_aniso_corner.pdf}
     \caption{Correlation plot of the Fickian diffusion coefficient, $D^*$ and the spinning, $D_s$ and tumbling, $D_t$, rotational diffusion coefficients from the anisotropic model given the experimental data.}
@@ -915,7 +918,7 @@ The marginal posterior distributions of the other key parameters, $\langle u^2 \
 \end{figure}
 %
 %
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.33\columnwidth]{figures/si_u_bkg.pdf}
     \caption{Marginal posterior distributions for (a) the mean-squared displacement (MSD) parameter $\langle u^2 \rangle$, in the Debye–Waller factor in the anisotropic model and (b) the flat background intensity as a function of $Q$ at incident energies of \qty{3.60}{\milli\electronvolt} (green) and \qty{1.97}{\milli\electronvolt} (pink), shading indicates the $1\sigma$, $2\sigma$, and $3\sigma$ credible intervals.}
@@ -925,17 +928,19 @@ The marginal posterior distributions of the other key parameters, $\langle u^2 \
 %
 
 The model agreement, represented by the maximum \emph{a posteriori} for each of the incident energies, is shown in \cref{fig:si_model360_fit} (\qty{3.6}{\milli\electronvolt}, 12 Q bins) and \cref{fig:si_model197_fit} (\qty{1.97}{\milli\electronvolt}, 14 Q bins), indicating very good agreement between the model and the data across all $Q$ for both incident energies.
+In the interest of clarity, we compare the maximum \emph{a-posteriori} for the isotropic and anisotropic models with the data in \cref{fig:si_iso_aniso_compare}. 
+There appears to be some structuring present in the ratio between the maximum \emph{a-posteriori} isotropic model and the data (specifically the model underestimates the dynamic structure factor at small $\omega$ and $\qty{1.1}{\per\angstrom} \leq Q < Q_{\textrm{max}}$), which is not observed for the anisotropic model. 
 %
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{figures/si_model360_fit.pdf}
     \caption{Comparison between the maximum \emph{a posteriori} for the anisotropic model (green) given the binned p-LET data (blue, with errorbars indicating a single standard deviation) at an incident energy of \qty{3.60}{\milli\electronvolt}, at the \num{12} $Q$-bins used.}
     \label{fig:si_model360_fit}
     \script{si_model360_fit.py}
 \end{figure}
-
-
-\begin{figure}
+%
+%
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{figures/si_model197_fit.pdf}
     \caption{Comparison between the maximum \emph{a posteriori} for the anisotropic model (green) given the binned p-LET data (blue, with errorbars indicating a single standard deviation) at an incident energy of \qty{1.97}{\milli\electronvolt}, at the \num{14} $Q$-bins used.}
@@ -943,24 +948,21 @@ The model agreement, represented by the maximum \emph{a posteriori} for each of 
     \script{si_model197_fit.py}
 \end{figure}
 %
-
-In the interest of clarity, we compare the maximum \emph{a-posteriori} for the isotropic and anisotropic models with the data in \cref{fig:si_iso_aniso_compare}. 
-There appears to be some structuring present in the ratio between the maximum \emph{a-posteriori} isotropic model and the data (specifically the model underestimates the dynamic structure factor at small $\omega$ and $\qty{1.1}{\per\angstrom} \leq Q < Q_{\textrm{max}}$), which is not observed for the anisotropic model. 
-
-\begin{figure}
+%
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{figures/si_iso_aniso_compare.pdf}
     \caption{A comparison of the isotropic and anisotropic model maximum \emph{a posteriori} given experimental LET data at incident energies of $\qtylist{1.97;3.60}{\milli\electronvolt}$ mirroring \cref{fig:qens}.}
     \label{fig:si_iso_aniso_compare}
     \script{si_iso_aniso_compare.py}
 \end{figure}
-
+%
 
 \section{Position and Orientation Probability Density Function}
 \label{sec:comp_marta}
 
 The relative orientations of pairs of benzene molecules were evaluated as a function of their centre-to-centre separation for 2000 randomly chosen frames from the full benzene simulation trajectory (\cref{fig:si_angular_density}).
-The intermolecular angle was defined as the angle between vectors parallel to the principal axis of rotation of the benzene molecule, as defined in~\cite{Falkowska2016}.
+The intermolecular angle was defined as the angle between vectors parallel to the principal axis of rotation of the benzene molecule, as defined by Falkowska \emph{et al.}~\cite{Falkowska2016}.
 The angles were found for molecules between $\qtyrange{3}{8}{\angstrom}$ (in 34 bins) and binned into 45 evenly spaced angular bins between $\qtyrange{0}{90}{\degree}$.
 The resulting two–dimensional histogram $g(r,\theta)$ was normalised by the bulk number density and the spherical sector volume corresponding to each $(r,\theta)$ bin,
 %
@@ -984,8 +986,8 @@ The radial distribution function $g(r)$ and angular distribution function $g(\th
 \end{figure}
 %
 
-From the experimental analysis of total neutron scattering data from benzene, Falkowska \emph{et al.} observed the presence of tightly bound ($<\qty{4}{\angstrom}$) $\pi$-stacked benzene dimers and perpendicularly structured dimers in either `T' or `Y' configurations (see Fig. 14 in ~\cite{Falkowska2016}). 
-In our simulations, we observe some presence of the `T' and `Y' configurations, but much less than in the experiment.
+From the experimental analysis of total neutron scattering data from benzene, Falkowska \emph{et al.} observed the presence of tightly bound ($<\qty{4}{\angstrom}$) $\pi$-stacked benzene dimers and perpendicularly structured dimers in either `T' or `Y' configurations ($\qty{70}{\degree} < \theta \leq \qty{90}{\degree}$, see Fig. 14 in ref.~\cite{Falkowska2016}). 
+In our simulations, we observe some presence of the `T' and `Y' configurations, but much less than in the experiment, i.e., no intensity increase at high $\theta$.
 Therefore, we do not see evidence of the tightly bound $\pi$-stacked structures. 
 We believe that the presence of such dimeric structures may be related to the greater rotational anisotropy observed in our experiment than in the simulation analysis. 
 
