@@ -1,7 +1,10 @@
 models = ['model_nogauss_oneexp', 'model_nogauss_twoexp', 'model_nogauss_oneexpgauss', 'model_nogauss_twoexpgauss', 'model_gauss_oneexp', 'model_gauss_twoexp', 'model_gauss_oneexpgauss', 'model_gauss_twoexpgauss']
+n_bkg = range(13)
 
 rule all:
     input:
+        [f"src/data/rotation_only_aniso_model_nbkg{j:02d}" for j in n_bkg],
+        [f"src/data/rotation_only_iso_model_nbkg{k:02d}" for k in n_bkg],
         "src/data/pLET_aniso_model.pkl",
         "src/data/pLET_iso_model.pkl",
         "src/data/pLET_aniso_model_samples_360.pkl",
@@ -10,6 +13,33 @@ rule all:
         "src/data/pLET_iso_model_samples_197.pkl",
         [f"src/data/{i}.pkl" for i in models],
          "src/data/lit_approach.pkl"
+
+rule:
+    conda: "fitting-qens"
+    name: "rotation_only_aniso_sampling"
+    input: 
+        "src/data/rotation_only_incoh_mdanse.csv",
+        "src/code/rotation_background_nested_sampling/aniso/runner.py",
+        "src/code/rotation_background_nested_sampling/utility/model.py",
+        "src/code/rotation_background_nested_sampling/utility/paths.py",
+    output:
+        [f"src/data/rotation_only_aniso_model_nbkg{j:02d}" for j in n_bkg]
+    script:
+        "src/code/rotation_background_nested_sampling/aniso/runner.py"
+
+rule:
+    conda: "fitting-qens"
+    name: "rotation_only_iso_sampling"
+    input: 
+        "src/data/rotation_only_incoh_mdanse.csv",
+        "src/code/rotation_background_nested_sampling/iso/runner.py",
+        "src/code/rotation_background_nested_sampling/utility/model.py",
+        "src/code/rotation_background_nested_sampling/utility/paths.py",
+    output:
+        [f"src/data/rotation_only_iso_model_nbkg{k:02d}" for k in n_bkg]
+    script:
+        "src/code/rotation_background_nested_sampling/iso/runner.py"
+
 
 rule:
     conda: "fitting-qens"
