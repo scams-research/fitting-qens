@@ -2,12 +2,19 @@ models = ['model_nogauss_oneexp', 'model_nogauss_twoexp', 'model_nogauss_oneexpg
 
 rule all:
     input:
+        "src/data/pLET_aniso_model.pkl",
+        "src/data/pLET_iso_model.pkl",
+        "src/data/pLET_aniso_model_samples_360.pkl",
+        "src/data/pLET_aniso_model_samples_197.pkl",
+        "src/data/pLET_iso_model_samples_360.pkl",
+        "src/data/pLET_iso_model_samples_197.pkl",
         [f"src/data/{i}.pkl" for i in models],
          "src/data/lit_approach.pkl"
 
 rule:
     conda: "fitting-qens"
     name: "experimental_nested_sampling_anisotropic"
+    threads: 32
     input:
         "src/code/experiment_nested_sampling/aniso/runner.py",
         "src/code/experiment_nested_sampling/utility/bounds.py",
@@ -27,6 +34,7 @@ rule:
 rule:
     conda: "fitting-qens"
     name: "experimental_nested_sampling_isotropic"
+    threads:  32
     input:
         "src/code/experiment_nested_sampling/iso/runner.py",
         "src/code/experiment_nested_sampling/utility/bounds.py",
@@ -41,6 +49,7 @@ rule:
         "src/data/pLET_iso_model.pkl"
     shell:
         "python {input[0]}"
+
 
 rule:
     conda: "fitting-qens"
