@@ -1,10 +1,13 @@
 models = ['model_nogauss_oneexp', 'model_nogauss_twoexp', 'model_nogauss_oneexpgauss', 'model_nogauss_twoexpgauss', 'model_gauss_oneexp', 'model_gauss_twoexp', 'model_gauss_oneexpgauss', 'model_gauss_twoexpgauss']
 n_bkg = range(13)
+energies = [0.5,0.75,1.0,1.25,1.5]
 
 rule all:
     input:
-        [f"src/data/rotation_only_aniso_model_nbkg{j:02d}" for j in n_bkg],
-        [f"src/data/rotation_only_iso_model_nbkg{k:02d}" for k in n_bkg],
+        [f"src/data/rotation_only_aniso_model_nbkg{j:02d}.pkl" for j in n_bkg],
+        [f"src/data/iso_full_mod_{round(m*100):03d}mev_run.pkl" for m in energies],
+        [f"src/data/rotation_only_iso_model_nbkg{k:02d}.pkl" for k in n_bkg],
+        [f"src/data/aniso_full_mod_{round(l*100):03d}mev_run.pkl" for l in energies],
         "src/data/pLET_aniso_model.pkl",
         "src/data/pLET_iso_model.pkl",
         "src/data/pLET_aniso_model_samples_360.pkl",
@@ -16,6 +19,32 @@ rule all:
 
 rule:
     conda: "fitting-qens"
+    name: "energy_range_iso_sampling"
+    input: 
+        "src/data/incoh_mdanse.csv",
+        "src/code/energy_range_nested_sampling/iso/runner.py",
+        "src/code/energy_range_nested_sampling/utility/model.py",
+        "src/code/energy_range_nested_sampling/utility/paths.py",
+    output:
+        [f"src/data/iso_full_mod_{round(m*100):03d}mev_run.pkl" for m in energies]
+    script:
+        "src/code/energy_range_nested_sampling/iso/runner.py"
+
+rule:
+    conda: "fitting-qens"
+    name: "energy_range_aniso_sampling"
+    input: 
+        "src/data/incoh_mdanse.csv",
+        "src/code/energy_range_nested_sampling/aniso/runner.py",
+        "src/code/energy_range_nested_sampling/utility/model.py",
+        "src/code/energy_range_nested_sampling/utility/paths.py",
+    output:
+        [f"src/data/aniso_full_mod_{round(l*100):03d}mev_run.pkl" for l in energies]
+    script:
+        "src/code/energy_range_nested_sampling/aniso/runner.py"
+
+rule:
+    conda: "fitting-qens"
     name: "rotation_only_aniso_sampling"
     input: 
         "src/data/rotation_only_incoh_mdanse.csv",
@@ -23,7 +52,7 @@ rule:
         "src/code/rotation_background_nested_sampling/utility/model.py",
         "src/code/rotation_background_nested_sampling/utility/paths.py",
     output:
-        [f"src/data/rotation_only_aniso_model_nbkg{j:02d}" for j in n_bkg]
+        [f"src/data/rotation_only_aniso_model_nbkg{j:02d}.pkl" for j in n_bkg]
     script:
         "src/code/rotation_background_nested_sampling/aniso/runner.py"
 
@@ -36,7 +65,7 @@ rule:
         "src/code/rotation_background_nested_sampling/utility/model.py",
         "src/code/rotation_background_nested_sampling/utility/paths.py",
     output:
-        [f"src/data/rotation_only_iso_model_nbkg{k:02d}" for k in n_bkg]
+        [f"src/data/rotation_only_iso_model_nbkg{k:02d}.pkl" for k in n_bkg]
     script:
         "src/code/rotation_background_nested_sampling/iso/runner.py"
 
