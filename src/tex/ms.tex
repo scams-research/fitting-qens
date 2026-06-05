@@ -478,14 +478,14 @@ The spin-incoherent dynamic structure factor $S_{\mathrm{inc}}$ was finally obta
 \subsection{Data Reduction}
 \label{sec:data-red}
 
-The experimental IRIS data was binned into \num{12} $Q$-bins, each with a width of ~\qty{0.12}{\per\angstrom} across the 51 detectors with a total $Q$-range of $\qtyrange{0.44}{1.85}{\per\angstrom}$.
+The experimental IRIS data was binned into \num{12} $Q$-bins, each with a width of ~\qty{0.113}{\per\angstrom} across the 51 detectors with a total $Q$-range of $\qtyrange{0.44}{1.79}{\per\angstrom}$.
 A vanadium sample was used to determine the instrument's resolution function. 
 The same sample was used to correct for detector efficiency, by normalising each QENS spectrum with the energy-integrated vanadium sample intensity at the corresponding $Q$-value. 
 Data measured from an empty sample can were used to quantify the instrument background and were subtracted from both the benzene and vanadium data. 
 
 The experimental p-LET data were initially binned into \num{30} $Q$-bins for each incident energy.
-This data was then sampled in the chosen $Q$ range, based on the region of interest and instrumental constraints $\qtyrange{0.6}{1.8}{\per\angstrom}$, for $E_i = \qty{3.60}{\milli\electronvolt}$ and between $\qtyrange{0.55}{1.58}{\per\angstrom}$ for $E_i=\qty{1.97}{\milli\electronvolt}$. 
-This resulted in 12 and 14 bins of width ~\qty{0.10}{\per\angstrom} and ~\qty{0.07}{\per\angstrom} for \qty{3.6}{\milli\electronvolt} and \qty{1.97}{\milli\electronvolt}, respectively, within the chosen $Q$-range.
+This data was then sampled in the chosen $Q$ range, based on the region of interest and instrumental constraints $\qtyrange{0.67}{1.72}{\per\angstrom}$, for $E_i = \qty{3.60}{\milli\electronvolt}$ and between $\qtyrange{0.59}{1.53}{\per\angstrom}$ for $E_i=\qty{1.97}{\milli\electronvolt}$. 
+This resulted in 12 and 14 bins of width ~\qty{0.096}{\per\angstrom} and ~\qty{0.073}{\per\angstrom} for \qty{3.6}{\milli\electronvolt} and \qty{1.97}{\milli\electronvolt}, respectively, within the chosen $Q$-range.
 Variations in instrumental detector efficiency were corrected using a “white-beam” vanadium measurement collected at the beginning of the cycle.
 A frozen benzene measurement at \qty{260}{\kelvin} was used as an approximation of the instrumental resolution function. 
 This frozen sample is not a perfect representation of the true resolution, as some molecular mobility remains at this temperature. 
@@ -863,11 +863,11 @@ S_R(Q, \omega) =
 j_0^2(QR)\,\delta(\omega) + 3\,j_1^2(QR)
 \left[
 \frac{1}{\pi}
-\frac{2D_r}{\omega^2 + 2(D_r)^2}
+\frac{2D_r}{\omega^2 + (2D_r)^2}
 \right] + 5\,j_2^2(QR)
 \left[
 \frac{1}{\pi}
-\frac{6D_r}{\omega^2 + (D_r)^2} 
+\frac{6D_r}{\omega^2 + (6D_r)^2} 
 \right],
 \label{eqn:iso}
 \end{equation}
