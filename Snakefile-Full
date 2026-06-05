@@ -1,9 +1,157 @@
 models = ['model_nogauss_oneexp', 'model_nogauss_twoexp', 'model_nogauss_oneexpgauss', 'model_nogauss_twoexpgauss', 'model_gauss_oneexp', 'model_gauss_twoexp', 'model_gauss_oneexpgauss', 'model_gauss_twoexpgauss']
+n_bkg = range(13)
+energies = [0.5,0.75,1.0,1.25,1.5]
 
 rule all:
     input:
+        [f"src/data/rotation_only_aniso_model_nbkg{j:02d}.pkl" for j in n_bkg],
+        [f"src/data/iso_full_mod_{round(m*100):03d}mev_run.pkl" for m in energies],
+        [f"src/data/rotation_only_iso_model_nbkg{k:02d}.pkl" for k in n_bkg],
+        [f"src/data/aniso_full_mod_{round(l*100):03d}mev_run.pkl" for l in energies],
+        "src/data/pLET_aniso_model.pkl",
+        "src/data/pLET_iso_model.pkl",
+        "src/data/pLET_aniso_model_samples_360.pkl",
+        "src/data/pLET_aniso_model_samples_197.pkl",
+        "src/data/pLET_iso_model_samples_360.pkl",
+        "src/data/pLET_iso_model_samples_197.pkl",
         [f"src/data/{i}.pkl" for i in models],
          "src/data/lit_approach.pkl"
+
+rule:
+    conda: "fitting-qens"
+    name: "energy_range_iso_sampling"
+    input: 
+        "src/data/incoh_mdanse.csv",
+        "src/code/energy_range_nested_sampling/iso/runner.py",
+        "src/code/energy_range_nested_sampling/utility/model.py",
+        "src/code/energy_range_nested_sampling/utility/paths.py",
+    output:
+        [f"src/data/iso_full_mod_{round(m*100):03d}mev_run.pkl" for m in energies]
+    script:
+        "src/code/energy_range_nested_sampling/iso/runner.py"
+
+rule:
+    conda: "fitting-qens"
+    name: "energy_range_aniso_sampling"
+    input: 
+        "src/data/incoh_mdanse.csv",
+        "src/code/energy_range_nested_sampling/aniso/runner.py",
+        "src/code/energy_range_nested_sampling/utility/model.py",
+        "src/code/energy_range_nested_sampling/utility/paths.py",
+    output:
+        [f"src/data/aniso_full_mod_{round(l*100):03d}mev_run.pkl" for l in energies]
+    script:
+        "src/code/energy_range_nested_sampling/aniso/runner.py"
+
+rule:
+    conda: "fitting-qens"
+    name: "rotation_only_aniso_sampling"
+    input: 
+        "src/data/rotation_only_incoh_mdanse.csv",
+        "src/code/rotation_background_nested_sampling/aniso/runner.py",
+        "src/code/rotation_background_nested_sampling/utility/model.py",
+        "src/code/rotation_background_nested_sampling/utility/paths.py",
+    output:
+        [f"src/data/rotation_only_aniso_model_nbkg{j:02d}.pkl" for j in n_bkg]
+    script:
+        "src/code/rotation_background_nested_sampling/aniso/runner.py"
+
+rule:
+    conda: "fitting-qens"
+    name: "rotation_only_iso_sampling"
+    input: 
+        "src/data/rotation_only_incoh_mdanse.csv",
+        "src/code/rotation_background_nested_sampling/iso/runner.py",
+        "src/code/rotation_background_nested_sampling/utility/model.py",
+        "src/code/rotation_background_nested_sampling/utility/paths.py",
+    output:
+        [f"src/data/rotation_only_iso_model_nbkg{k:02d}.pkl" for k in n_bkg]
+    script:
+        "src/code/rotation_background_nested_sampling/iso/runner.py"
+
+
+rule:
+    conda: "fitting-qens"
+    name: "experimental_nested_sampling_anisotropic"
+    threads: 32
+    input:
+        "src/code/experiment_nested_sampling/aniso/runner.py",
+        "src/code/experiment_nested_sampling/utility/bounds.py",
+        "src/code/experiment_nested_sampling/utility/data.py",
+        "src/code/experiment_nested_sampling/utility/model.py",
+        "src/code/experiment_nested_sampling/utility/paths.py",
+        "src/data/pLET_benzene_290K_360_inc.nxspe",
+        "src/data/pLET_empty_360_inc.nxspe",
+        "src/data/pLET_benzene_290K_197_inc.nxspe",
+        "src/data/pLET_empty_197_inc.nxspe",
+    output:
+        "src/data/pLET_aniso_model.pkl"
+    shell:
+        "python {input[0]}"
+
+
+rule:
+    conda: "fitting-qens"
+    name: "experimental_nested_sampling_isotropic"
+    threads:  32
+    input:
+        "src/code/experiment_nested_sampling/iso/runner.py",
+        "src/code/experiment_nested_sampling/utility/bounds.py",
+        "src/code/experiment_nested_sampling/utility/data.py",
+        "src/code/experiment_nested_sampling/utility/model.py",
+        "src/code/experiment_nested_sampling/utility/paths.py",
+        "src/data/pLET_benzene_290K_360_inc.nxspe",
+        "src/data/pLET_empty_360_inc.nxspe",
+        "src/data/pLET_benzene_290K_197_inc.nxspe",
+        "src/data/pLET_empty_197_inc.nxspe",
+    output:
+        "src/data/pLET_iso_model.pkl"
+    shell:
+        "python {input[0]}"
+
+
+rule:
+    conda: "fitting-qens"
+    name: "experimental_nested_sampling_anisotropic_sampler"
+    input:
+        "src/code/experiment_nested_sampling/aniso/sampler.py",
+        "src/code/experiment_nested_sampling/aniso/runner.py",
+        "src/code/experiment_nested_sampling/utility/bounds.py",
+        "src/code/experiment_nested_sampling/utility/data.py",
+        "src/code/experiment_nested_sampling/utility/model.py",
+        "src/code/experiment_nested_sampling/utility/paths.py",
+        "src/data/pLET_aniso_model.pkl",
+        "src/data/pLET_benzene_290K_360_inc.nxspe",
+        "src/data/pLET_empty_360_inc.nxspe",
+        "src/data/pLET_benzene_290K_197_inc.nxspe",
+        "src/data/pLET_empty_197_inc.nxspe",
+    output:
+        "src/data/pLET_aniso_model_samples_360.pkl",
+        "src/data/pLET_aniso_model_samples_197.pkl",
+    shell:
+        "python {input[0]}"
+
+
+rule:
+    conda: "fitting-qens"
+    name: "experimental_nested_sampling_isotropic_sampler"
+    input:
+        "src/code/experiment_nested_sampling/iso/sampler.py",
+        "src/code/experiment_nested_sampling/iso/runner.py",
+        "src/code/experiment_nested_sampling/utility/bounds.py",
+        "src/code/experiment_nested_sampling/utility/data.py",
+        "src/code/experiment_nested_sampling/utility/model.py",
+        "src/code/experiment_nested_sampling/utility/paths.py",
+        "src/data/pLET_iso_model.pkl",
+        "src/data/pLET_benzene_290K_360_inc.nxspe",
+        "src/data/pLET_empty_360_inc.nxspe",
+        "src/data/pLET_benzene_290K_197_inc.nxspe",
+        "src/data/pLET_empty_197_inc.nxspe",
+    output:
+        "src/data/pLET_iso_model_samples_360.pkl",
+        "src/data/pLET_iso_model_samples_197.pkl",
+    shell:
+        "python {input[0]}"
 
 rule:
     conda: "fitting-qens"
@@ -28,3 +176,4 @@ rule:
         "src/data/lit_approach.pkl"
     script:
         "src/code/lit_compare.py"
+

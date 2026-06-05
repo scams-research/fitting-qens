@@ -46,7 +46,7 @@ To run the workflow and generate the paper locally using the cached data run the
 ```
 git clone git@github.com:scams-research/fitting-qens.git
 cd fitting-qens
-pip install showyourwork
+pip install git+https://github.com/showyourwork/showyourwork
 showyourwork build 
 ```
 
@@ -58,8 +58,9 @@ Full details of the workflow can be determined from the [`Snakefile`](https://gi
 The ambition it that highly computationally intensive elements of the analysis workflow are equally reproducible. 
 However, the analysis that has gone into this work requires significant computational power. 
 Therefore, the `showyourwork` workflow only reproduces the plotting. 
+The full analysis workflow is available using the [`Snakefile-Full`](https://github.com/scams-research/fitting-qens/blob/main/Snakefile-Full). 
 
-We are in the progress of making the full analysis workflow available, using the `Snakefile-Full`. 
+If you intend to run [`Snakefile-Full`](https://github.com/scams-research/fitting-qens/blob/main/Snakefile-Full), it is strongly reccomended you adjust the cores and threads arguments within the snakefille, as well as the dynesty `nworkers` argument within the [`experiment_nested_sampling`](https://github.com/scams-research/fitting-qens/src/code/experiment_nested_sampling) runners. 
 
 ```
 mamba create --file environment.yml -n fitting-qens

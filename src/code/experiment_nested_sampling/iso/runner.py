@@ -125,7 +125,7 @@ def prior_transform(u):
 
 
 if __name__ == "__main__":
-    nworkers = 4
+    nworkers = 32
     with Pool(processes=nworkers) as pool:
         sampler = dynesty.NestedSampler(
             log_likelihood2,

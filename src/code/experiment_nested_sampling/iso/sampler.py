@@ -73,8 +73,8 @@ for q in range(q_mid360.size):
 for q in range(q_mid197.size):
     samples197[q] = full_model_sampler(res197, q, ns_res_samples197)
 
-with open(str(paths.data) + "pLET_iso_model_samples_197.pkl", "wb") as handle:
+with open(str(paths.data) + "/pLET_iso_model_samples_197.pkl", "wb") as handle:
     pickle.dump(samples197, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-with open(str(paths.data) + "pLET_iso_model_samples_360.pkl", "wb") as handle:
+with open(str(paths.data) + "/pLET_iso_model_samples_360.pkl", "wb") as handle:
     pickle.dump(samples360, handle, protocol=pickle.HIGHEST_PROTOCOL)
