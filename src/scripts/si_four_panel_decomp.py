@@ -65,14 +65,14 @@ ax2.plot(
     marker="o",
     ls='',
     label=r"$\delta(\omega)$",
-    color="#0173B2",
+    color="#029E73",
     zorder=10
 )
 ax2.plot(
     q_mid,
     EISF_iso,
     label=r"$j_0^2(Q,2.48\,\mathrm{Å})$",
-    color="#029E73",
+    color="#CC78BC",
 )
 ax2.set_xlabel(r"$Q$ / Å$^{-1}$")
 ax2.set_xlim(0.4, 1.85)
