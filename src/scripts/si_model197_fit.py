@@ -99,7 +99,7 @@ axes[11].set_xlabel(r'$\omega$ / meV')
 axes[12].set_xlabel(r'$\omega$ / meV')
 axes[13].set_xlabel(r'$\omega$ / meV')
 axes[11].set_zorder(100)
-axes[0].legend(['Anisotropic model', 'Isotropic model'])
+axes[0].legend(['Anisotropic model, log(z) = -2874', 'Isotropic model, log(z) = -3032.8'])
 
 for ax in axes:
     ax.spines[['right', 'top']].set_visible(False)

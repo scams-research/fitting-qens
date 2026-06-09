@@ -77,7 +77,7 @@ for i in range(len(q_mid360)):
 axes[9].set_xlabel(r'$\omega$ / meV')
 axes[10].set_xlabel(r'$\omega$ / meV')
 axes[11].set_xlabel(r'$\omega$ / meV')
-axes[0].legend(['Anisotropic model', 'Isotropic model'])
+axes[0].legend(['Anisotropic model, log(z) = -2874', 'Isotropic model, log(z) = -3032.8'])
 
 for ax in axes:
     ax.spines[['right', 'top']].set_visible(False)
