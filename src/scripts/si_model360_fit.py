@@ -14,7 +14,7 @@ from plet_data import PletData
 
 
 
-def get_model(energy, q_lim_low, q_lim_high, q_bins, omega_lim=1.25):
+def get_model(energy, q_lim_low, q_lim_high, q_bins, model, omega_lim=1.25):
 
     incident = {197: 1.97, 360: 3.60}
 
@@ -44,7 +44,7 @@ def get_model(energy, q_lim_low, q_lim_high, q_bins, omega_lim=1.25):
 
     omega_masked = data.omega_mid.values[np.invert(data.data.masks["omega"].values)]
     q_mid = data.q_mid.values[np.invert(data.data.masks["q"].values)]
-    samples = pickle.load(open(paths.data / f"pLET_aniso_model_samples_{energy}.pkl", "rb"))
+    samples = pickle.load(open(paths.data / f"pLET_{model}_model_samples_{energy}.pkl", "rb"))
 
 
     return q_mid, omega_masked, data, samples
@@ -56,13 +56,16 @@ axes = [fig.add_subplot(gs[i, j]) for i in range(4) for j in range(3)]
 credible_intervals = [[16, 84], [2.5, 97.5], [0.15, 99.85]]
 alphas = [0.8, 0.6, 0.4]
 
-q_mid360, omega_masked360, data360, samples360 = get_model(360, 0.6, 1.8,31)
+q_mid360, omega_masked360, data360, samples360 = get_model(360, 0.6, 1.8,31, model = 'aniso')
+_, _, _, samples360_iso = get_model(360, 0.6, 1.8,31, model='iso')
 
 for i in range(len(q_mid360)):
     ax = axes[i]
     for ci, alpha in zip(credible_intervals, alphas):
         y_lower, y_upper = np.percentile(samples360[i], ci, axis=0)
-        ax.fill_between(omega_masked360, y_lower, y_upper, color=fp.colors[1], alpha=alpha, lw=0, label = 'Anisotropic model')
+        ax.fill_between(omega_masked360, y_lower, y_upper, color=fp.colors[1], alpha=alpha, lw=0)
+        y_lower_iso, y_upper_iso = np.percentile(samples360_iso[i], ci, axis=0)
+        ax.fill_between(omega_masked360, y_lower_iso, y_upper_iso, color=fp.colors[2], alpha=alpha, lw=0)
     if i < 9:
         ax.set_xticks([])
 
@@ -74,6 +77,7 @@ for i in range(len(q_mid360)):
 axes[9].set_xlabel(r'$\omega$ / meV')
 axes[10].set_xlabel(r'$\omega$ / meV')
 axes[11].set_xlabel(r'$\omega$ / meV')
+axes[0].legend(['Anisotropic model', 'Isotropic model'])
 
 for ax in axes:
     ax.spines[['right', 'top']].set_visible(False)
