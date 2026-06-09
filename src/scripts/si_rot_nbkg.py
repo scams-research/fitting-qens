@@ -27,7 +27,7 @@ for x in range(13):
 
 fig, ax0 = plt.subplots(figsize=(fp.PAGE_WIDTH*0.5, 1.37))
 
-ax0.plot(range(13), -logz, marker='o', ls='', color="#CC78BC")
+ax0.plot(range(13), -logz, marker='^', ls='', color="#CC78BC")
 ax0.plot(range(13), -logz_iso, marker='o', ls='', color="#029E73")
 
 ax0.set_xlabel("No. background terms")

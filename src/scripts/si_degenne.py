@@ -118,7 +118,7 @@ ax1.set_ylabel("$m^{0.5}_2$  / meV")
 ax1.set_ylim(None, 0.25)
 ax1.set_yticks([0.15, 0.2, 0.25])
 
-fig.legend(loc='outside upper center', ncol=3, bbox_to_anchor=(0.5, 1.1))
+fig.legend(loc='outside upper center', ncol=4, bbox_to_anchor=(0.5, 1.05))
 
 for i, ax in enumerate([ax1]):
     ax.set_xlim(0.4, 1.9)
