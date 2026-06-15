@@ -20,12 +20,12 @@ This integrated, Bayesian evidence-based analytical framework defines a new para
 <a href="https://github.com/scams-research/fitting-qens/raw/main-pdf/ms.pdf">
 <img src="https://img.shields.io/badge/article-pdf-blue.svg?style=flat" alt="Read the article"/>
 </a>
-  <a href="https://arxiv.org/abs/2603.06080">
+<a href="https://arxiv.org/abs/2603.06080">
 <img src="https://img.shields.io/badge/arXiv-2603.06080-orange.svg"/>
 </a>
-<!-- <a href="https://doi.org/10.1063/5.0260928">
-<img src="https://img.shields.io/badge/publication%20DOI-10.1063/5.0260928-yellow.svg?style=flat"/>
-</a> -->
+<a href="https://doi.org/10.1021/acs.jpclett.6c01399">
+<img src="https://img.shields.io/badge/publication%20DOI-10.1021/acs.jpclett.6c01399-yellow.svg?style=flat"/>
+</a>
 <br><br>
 <a href= "https://orcid.org/0009-0002-6808-4573">Harry Richardson</a>,
 <a href="https://orcid.org/0000-0002-7794-8276">Kit McColl</a>,
