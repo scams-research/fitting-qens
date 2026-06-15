@@ -239,14 +239,6 @@ dependencies:
     - src/data/benzene_IRIS00107089.nxs
     - src/data/bkg_IRIS00107097.nxs
     - src/data/resolution_IRIS00107073.nxs
-  src/scripts/si_iso_aniso_compare.py:
-    - src/scripts/_fig_params.py
-    - src/data/pLET_benzene_290K_360_inc.nxspe
-    - src/data/pLET_benzene_290K_197_inc.nxspe
-    - src/data/pLET_aniso_model_samples_360.pkl
-    - src/data/pLET_aniso_model_samples_197.pkl
-    - src/data/pLET_iso_model_samples_360.pkl
-    - src/data/pLET_iso_model_samples_197.pkl
 
 
 
